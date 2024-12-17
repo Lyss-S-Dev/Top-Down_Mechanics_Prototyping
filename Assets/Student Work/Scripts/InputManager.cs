@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
 
     private Vector2 moveDirection;
     private Vector2 cursorPosition;
+    private Vector3 cursorWorldPosition;
     
     private void Awake()
     {
@@ -36,14 +37,24 @@ public class InputManager : MonoBehaviour
     {
         moveDirection = inputActions.INGAME.MOVE.ReadValue<Vector2>();
         cursorPosition = inputActions.INGAME.LOOK.ReadValue<Vector2>();
+        cursorWorldPosition = ConvertCursorToWorldPos();
     }
 
     public Vector2 GetMoveDirection()
     {
         return moveDirection;
     }
-    
-    
+
+    private Vector3 ConvertCursorToWorldPos()
+    {
+        Vector3 cursorPositionWithZ = new Vector3(cursorPosition.x, cursorPosition.y, 10);
+        return Camera.main.ScreenToWorldPoint(cursorPositionWithZ);
+    }
+
+    public Vector3 GetCursorWorldPosition()
+    {
+        return cursorWorldPosition;
+    }
 }
 
 
