@@ -9,6 +9,8 @@ public class PlayerMover : MonoBehaviour
     private Vector2 direction;
     
     [SerializeField] private float moveSpeed;
+
+    private bool isRunning;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,8 @@ public class PlayerMover : MonoBehaviour
     void Update()
     {
         direction = inputManager.GetMoveDirection();
+
+        isRunning = playerBody.linearVelocity.magnitude > 0f;
     }
 
     private void FixedUpdate()
@@ -32,5 +36,10 @@ public class PlayerMover : MonoBehaviour
     private void HandleMovement()
     {
         playerBody.linearVelocity = direction * (moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public bool GetIsRunning()
+    {
+        return isRunning;
     }
 }
