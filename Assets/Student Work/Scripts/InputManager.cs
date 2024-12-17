@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     private PlayerActions inputActions;
+
+    public event EventHandler AttackEvent;
 
     private Vector2 moveDirection;
     private Vector2 cursorPosition;
@@ -29,7 +32,12 @@ public class InputManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        inputActions.INGAME.ATTACK.performed += ATTACKOnperformed;
+    }
+
+    private void ATTACKOnperformed(InputAction.CallbackContext obj)
+    {
+        AttackEvent.Invoke(this,EventArgs.Empty);
     }
 
     // Update is called once per frame

@@ -44,6 +44,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ATTACK"",
+                    ""type"": ""Button"",
+                    ""id"": ""682aeff1-72cd-4253-b338-44f49f1cf807"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""MOVE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be12339d-dc00-478c-b040-35b331f61e20"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ATTACK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_INGAME = asset.FindActionMap("INGAME", throwIfNotFound: true);
         m_INGAME_MOVE = m_INGAME.FindAction("MOVE", throwIfNotFound: true);
         m_INGAME_LOOK = m_INGAME.FindAction("LOOK", throwIfNotFound: true);
+        m_INGAME_ATTACK = m_INGAME.FindAction("ATTACK", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -190,12 +211,14 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private List<IINGAMEActions> m_INGAMEActionsCallbackInterfaces = new List<IINGAMEActions>();
     private readonly InputAction m_INGAME_MOVE;
     private readonly InputAction m_INGAME_LOOK;
+    private readonly InputAction m_INGAME_ATTACK;
     public struct INGAMEActions
     {
         private @PlayerActions m_Wrapper;
         public INGAMEActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MOVE => m_Wrapper.m_INGAME_MOVE;
         public InputAction @LOOK => m_Wrapper.m_INGAME_LOOK;
+        public InputAction @ATTACK => m_Wrapper.m_INGAME_ATTACK;
         public InputActionMap Get() { return m_Wrapper.m_INGAME; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +234,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @LOOK.started += instance.OnLOOK;
             @LOOK.performed += instance.OnLOOK;
             @LOOK.canceled += instance.OnLOOK;
+            @ATTACK.started += instance.OnATTACK;
+            @ATTACK.performed += instance.OnATTACK;
+            @ATTACK.canceled += instance.OnATTACK;
         }
 
         private void UnregisterCallbacks(IINGAMEActions instance)
@@ -221,6 +247,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @LOOK.started -= instance.OnLOOK;
             @LOOK.performed -= instance.OnLOOK;
             @LOOK.canceled -= instance.OnLOOK;
+            @ATTACK.started -= instance.OnATTACK;
+            @ATTACK.performed -= instance.OnATTACK;
+            @ATTACK.canceled -= instance.OnATTACK;
         }
 
         public void RemoveCallbacks(IINGAMEActions instance)
@@ -242,5 +271,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     {
         void OnMOVE(InputAction.CallbackContext context);
         void OnLOOK(InputAction.CallbackContext context);
+        void OnATTACK(InputAction.CallbackContext context);
     }
 }
