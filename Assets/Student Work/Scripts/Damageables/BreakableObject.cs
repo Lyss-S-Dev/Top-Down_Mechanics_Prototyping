@@ -11,7 +11,7 @@ public class BreakableObject : MonoBehaviour, IDamageable
               if (brokenObjectParticles != null)
               {
                    GameObject createdParticles = Instantiate(brokenObjectParticles, transform.position, quaternion.identity);
-                   
+                   createdParticles.transform.up = createdParticles.transform.position - damageSource.position;
               }
               
               Destroy(this.gameObject);

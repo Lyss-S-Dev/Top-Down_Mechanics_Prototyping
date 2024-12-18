@@ -202,5 +202,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1f3857aaba2ce4da0cf1ce7e207da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 2
   brokenObjectParticles: {fileID: 7800979702718082525, guid: 7ddff16c5ea7d6b4483100a98ffa8798, type: 3}
