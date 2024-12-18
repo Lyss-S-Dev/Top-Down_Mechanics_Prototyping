@@ -4,7 +4,7 @@ public class LookAtCursor : MonoBehaviour
 {
     private InputManager inputManager;
 
-    [SerializeField] Transform worldSpacePoint;
+    private Vector3 worldPosition;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,8 +16,8 @@ public class LookAtCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        worldSpacePoint.position = inputManager.GetCursorWorldPosition();
-        transform.up = worldSpacePoint.position - this.transform.position;
+        worldPosition = inputManager.GetCursorWorldPosition();
+        transform.up = worldPosition  - this.transform.position;
         
     }
 }

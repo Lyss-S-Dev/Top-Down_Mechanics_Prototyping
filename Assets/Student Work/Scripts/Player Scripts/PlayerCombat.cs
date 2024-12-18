@@ -1,0 +1,56 @@
+using System;
+using UnityEngine;
+
+public class PlayerCombat : MonoBehaviour
+{
+    private InputManager inputManager;
+    private PlayerAnimator playerAnimator;
+
+    [SerializeField] private float playerDamage;
+    
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private Vector3 attackBoxSize;
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        inputManager = InputManager.Instance;
+        playerAnimator = GetComponent<PlayerAnimator>();
+        
+        inputManager.AttackEvent += InputManagerOnAttackEvent;
+    }
+
+    private void InputManagerOnAttackEvent(object sender, EventArgs e)
+    {
+        if (!playerAnimator.IsAttackAnimationPlaying())
+        {
+            playerAnimator.PerformAttackAnimation();
+        }
+        
+    }
+
+    public void HandleAttack()
+    {
+        
+        //draw overlap shape at attack point
+        Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0f);
+        
+        foreach(Collider2D t in targets)
+        {
+            if (t.gameObject.TryGetComponent(out IDamageable d) == true)
+            {
+                d.TakeDamage(playerDamage, this.transform);
+            }
+        }
+        
+        //for each overlap, check for damageable component
+        //call damage function for each one
+
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(attackPoint.position, attackBoxSize);
+    }
+    
+}
