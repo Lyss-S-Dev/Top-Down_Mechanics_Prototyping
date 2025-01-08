@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,18 @@ public class SceneLoader : MonoBehaviour
     public void HandleLoadScene(string sceneNameToLoad)
     {
         Debug.Log("WE ARE GOING TO LOAD A SCENE");
-        SceneManager.LoadScene(sceneNameToLoad);
+        StartCoroutine(LoadAsyncScene(sceneNameToLoad));
+    }
+
+
+
+    private IEnumerator LoadAsyncScene(string sceneName)
+    {
+        AsyncOperation loadingScene = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!loadingScene.isDone)
+        {
+            yield return null;
+        }
     }
 }

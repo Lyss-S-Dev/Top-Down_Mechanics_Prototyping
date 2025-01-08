@@ -10,6 +10,8 @@ public class PlayerCombat : MonoBehaviour
     
     [SerializeField] private Transform attackPoint;
     [SerializeField] private Vector3 attackBoxSize;
+
+    [SerializeField] private LayerMask ignoreLayers;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,13 +35,13 @@ public class PlayerCombat : MonoBehaviour
     {
         
         //draw overlap shape at attack point
-        Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0f);
+        Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0f, ~ignoreLayers);
         
         foreach(Collider2D t in targets)
         {
             if (t.gameObject.TryGetComponent(out IDamageable d) == true)
             {
-                d.TakeDamage(playerDamage, this.transform);
+                d.TakeDamage(playerDamage);
             }
         }
         

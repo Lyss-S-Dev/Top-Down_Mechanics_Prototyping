@@ -31,4 +31,9 @@ public class MainMenuManager : MonoBehaviour
         Debug.Log("QUITTING APPLICATION");
         Application.Quit();
     }
+
+    private void HandleControlsButtonClicked()
+    {
+        
+    }
 }

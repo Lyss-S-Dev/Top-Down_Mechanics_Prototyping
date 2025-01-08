@@ -12,7 +12,10 @@ public class EnemyBase : MonoBehaviour, IDamageable
         currentHealth = startingHealth;
     }
 
-    
+    public void TakeDamage(float damageValue)
+    {
+        
+    }
    
     public void TakeDamage(float damageValue, Transform damageSource)
     {
