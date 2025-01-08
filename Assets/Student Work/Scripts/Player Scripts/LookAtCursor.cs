@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LookAtCursor : MonoBehaviour
@@ -17,7 +18,12 @@ public class LookAtCursor : MonoBehaviour
     void Update()
     {
         worldPosition = inputManager.GetCursorWorldPosition();
-        transform.up = worldPosition  - this.transform.position;
         
+        
+    }
+
+    private void LateUpdate()
+    {
+        transform.up = worldPosition  - this.transform.position;
     }
 }

@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 
     public event EventHandler AttackEvent;
 
+    public event EventHandler PauseEvent;
+
     private Vector2 moveDirection;
     private Vector2 cursorPosition;
     private Vector3 cursorWorldPosition;
@@ -33,6 +35,13 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         inputActions.INGAME.ATTACK.performed += ATTACKOnperformed;
+        inputActions.INGAME.PAUSE.performed += PAUSEOnperformed;
+    }
+
+    private void PAUSEOnperformed(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Pause Button Pressed");
+        //PauseEvent.Invoke(this, EventArgs.Empty);
     }
 
     private void ATTACKOnperformed(InputAction.CallbackContext obj)

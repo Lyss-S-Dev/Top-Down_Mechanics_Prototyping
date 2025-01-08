@@ -31,6 +31,8 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadAsyncScene(string sceneName)
     {
         AsyncOperation loadingScene = SceneManager.LoadSceneAsync(sceneName);
+        
+        //you can put a loading screen here
 
         while (!loadingScene.isDone)
         {

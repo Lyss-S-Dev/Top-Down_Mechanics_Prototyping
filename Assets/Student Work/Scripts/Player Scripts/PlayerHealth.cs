@@ -15,12 +15,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         playerCurrentHealth = playerMaxHealth;
     }
 
-    private void Start()
-    {
-        
-        
-    }
-
     public void TakeDamage(float damageValue)
     {
         ModifyHealth(damageValue);

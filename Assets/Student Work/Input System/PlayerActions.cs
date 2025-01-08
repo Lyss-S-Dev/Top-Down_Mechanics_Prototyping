@@ -53,6 +53,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PAUSE"",
+                    ""type"": ""Button"",
+                    ""id"": ""4921055f-6f36-411b-a179-8881421a8ce8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""ATTACK"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b5dbbc0-5690-4e65-bb99-a69bb7c8de85"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PAUSE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_INGAME_MOVE = m_INGAME.FindAction("MOVE", throwIfNotFound: true);
         m_INGAME_LOOK = m_INGAME.FindAction("LOOK", throwIfNotFound: true);
         m_INGAME_ATTACK = m_INGAME.FindAction("ATTACK", throwIfNotFound: true);
+        m_INGAME_PAUSE = m_INGAME.FindAction("PAUSE", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -212,6 +233,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_INGAME_MOVE;
     private readonly InputAction m_INGAME_LOOK;
     private readonly InputAction m_INGAME_ATTACK;
+    private readonly InputAction m_INGAME_PAUSE;
     public struct INGAMEActions
     {
         private @PlayerActions m_Wrapper;
@@ -219,6 +241,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @MOVE => m_Wrapper.m_INGAME_MOVE;
         public InputAction @LOOK => m_Wrapper.m_INGAME_LOOK;
         public InputAction @ATTACK => m_Wrapper.m_INGAME_ATTACK;
+        public InputAction @PAUSE => m_Wrapper.m_INGAME_PAUSE;
         public InputActionMap Get() { return m_Wrapper.m_INGAME; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +260,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ATTACK.started += instance.OnATTACK;
             @ATTACK.performed += instance.OnATTACK;
             @ATTACK.canceled += instance.OnATTACK;
+            @PAUSE.started += instance.OnPAUSE;
+            @PAUSE.performed += instance.OnPAUSE;
+            @PAUSE.canceled += instance.OnPAUSE;
         }
 
         private void UnregisterCallbacks(IINGAMEActions instance)
@@ -250,6 +276,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ATTACK.started -= instance.OnATTACK;
             @ATTACK.performed -= instance.OnATTACK;
             @ATTACK.canceled -= instance.OnATTACK;
+            @PAUSE.started -= instance.OnPAUSE;
+            @PAUSE.performed -= instance.OnPAUSE;
+            @PAUSE.canceled -= instance.OnPAUSE;
         }
 
         public void RemoveCallbacks(IINGAMEActions instance)
@@ -272,5 +301,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnMOVE(InputAction.CallbackContext context);
         void OnLOOK(InputAction.CallbackContext context);
         void OnATTACK(InputAction.CallbackContext context);
+        void OnPAUSE(InputAction.CallbackContext context);
     }
 }
