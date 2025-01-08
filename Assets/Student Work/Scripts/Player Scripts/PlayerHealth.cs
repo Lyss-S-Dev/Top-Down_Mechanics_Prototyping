@@ -10,9 +10,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private const float playerMaxHealth = 6;
     private float playerCurrentHealth;
 
-    private void Start()
+    private void Awake()
     {
         playerCurrentHealth = playerMaxHealth;
+    }
+
+    private void Start()
+    {
+        
         
     }
 

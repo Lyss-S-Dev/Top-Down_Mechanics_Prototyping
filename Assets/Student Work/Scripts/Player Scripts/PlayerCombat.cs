@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (t.gameObject.TryGetComponent(out IDamageable d) == true)
             {
-                d.TakeDamage(playerDamage);
+                d.TakeDamage(playerDamage, this.transform);
             }
         }
         

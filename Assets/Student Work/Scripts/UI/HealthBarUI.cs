@@ -9,7 +9,6 @@ public class HealthBarUI : MonoBehaviour
 
     [SerializeField] private RectTransform[] healthPips;
 
-    [SerializeField] private TextMeshProUGUI healthText;
     
     private 
     void Start()
@@ -28,7 +27,7 @@ public class HealthBarUI : MonoBehaviour
     private void UpdateHealthBar()
     {
         float currentPlayerHealth = playerHealth.GetPlayerHealth();
-        healthText.text = playerHealth.GetPlayerHealth().ToString(); 
+       
 
         for (int i = 0; i < healthPips.Length; i++)
         {
