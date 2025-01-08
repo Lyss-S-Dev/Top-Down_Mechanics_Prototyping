@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
     private void PAUSEOnperformed(InputAction.CallbackContext obj)
     {
         Debug.Log("Pause Button Pressed");
-        //PauseEvent.Invoke(this, EventArgs.Empty);
+        PauseEvent.Invoke(this, EventArgs.Empty);
     }
 
     private void ATTACKOnperformed(InputAction.CallbackContext obj)

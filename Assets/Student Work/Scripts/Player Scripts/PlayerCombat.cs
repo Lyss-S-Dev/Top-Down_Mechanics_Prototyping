@@ -26,10 +26,14 @@ public class PlayerCombat : MonoBehaviour
 
     private void InputManagerOnAttackEvent(object sender, EventArgs e)
     {
-        if (!playerAnimator.IsAttackAnimationPlaying())
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
-            playerAnimator.PerformAttackAnimation();
+            if (!playerAnimator.IsAttackAnimationPlaying())
+            {
+                playerAnimator.PerformAttackAnimation();
+            }
         }
+        
         
     }
 

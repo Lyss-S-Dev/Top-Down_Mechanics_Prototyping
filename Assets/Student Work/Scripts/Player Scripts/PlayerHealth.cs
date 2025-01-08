@@ -10,18 +10,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private const float playerMaxHealth = 6;
     private float playerCurrentHealth;
 
+    private PlayerStateManager playerStateManager;
+
     private void Awake()
     {
+        playerStateManager = GetComponent<PlayerStateManager>();
         playerCurrentHealth = playerMaxHealth;
     }
 
     public void TakeDamage(float damageValue)
     {
-        ModifyHealth(damageValue);
+        if (playerStateManager.GetCurrentPlayerState() == PlayerStateManager.PlayerState.NORMAL)
+        {
+            ModifyHealth(damageValue);
+        }
+        
     }
     public void TakeDamage(float damageValue, Transform damageSource)
     {
-       ModifyHealth(damageValue);
+        if (playerStateManager.GetCurrentPlayerState() == PlayerStateManager.PlayerState.NORMAL)
+        {
+            ModifyHealth(damageValue);
+        }
     }
 
     private void ModifyHealth(float modValue)

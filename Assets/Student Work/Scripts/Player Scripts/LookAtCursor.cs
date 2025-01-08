@@ -18,12 +18,15 @@ public class LookAtCursor : MonoBehaviour
     void Update()
     {
         worldPosition = inputManager.GetCursorWorldPosition();
-        
-        
+
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        transform.up = worldPosition  - this.transform.position;
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        {
+            transform.up = worldPosition  - this.transform.position;
+        }
+        
     }
 }

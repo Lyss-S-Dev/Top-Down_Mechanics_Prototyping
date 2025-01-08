@@ -1,11 +1,15 @@
 
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance;
+    public event EventHandler StateHasChanged;
+
+    private InputManager inputManager;
     
     public enum GameState
     {
@@ -18,7 +22,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance = null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -28,9 +32,29 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        inputManager = InputManager.Instance;
+        inputManager.PauseEvent += InputManagerOnPauseEvent;
+    }
+
+    private void InputManagerOnPauseEvent(object sender, EventArgs e)
+    {
+        if (currentGameState != GameState.PAUSED)
+        {
+            ChangeGameState(GameState.PAUSED);
+        }
+        else
+        {
+            ChangeGameState(GameState.IN_GAME);
+        }
+        
+    }
+
     public void ChangeGameState(GameState stateToChange)
     {
         currentGameState = stateToChange;
+        StateHasChanged.Invoke(this, EventArgs.Empty);
     }
 
     public GameState GetCurrentGameState()

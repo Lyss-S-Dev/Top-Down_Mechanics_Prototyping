@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public enum PlayerState
     {
-        
+        NORMAL,
+        INVINCIBLE,
+        DEAD,
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   private  PlayerState currentPlayerState = PlayerState.NORMAL;
+
+   public void ChangePlayerState(PlayerState stateToChange)
+   {
+       currentPlayerState = stateToChange;
+   }
+
+   public PlayerState GetCurrentPlayerState()
+   {
+       return currentPlayerState;
+   }
 }
