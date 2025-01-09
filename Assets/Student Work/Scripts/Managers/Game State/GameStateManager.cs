@@ -15,7 +15,8 @@ public class GameStateManager : MonoBehaviour
     {
         IN_GAME,
         PAUSED, 
-        IN_MENU,
+        GAME_OVER,
+        END_OF_LEVEL,
     }
 
     private GameState currentGameState = GameState.IN_GAME;

@@ -16,6 +16,10 @@ public class PauseMenu : CanvasBaseFunctions
         {
             gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
         }
+        else
+        {
+            //BIG BAD ERROR
+        }
         
         continueGameButton.onClick.AddListener(ContinueGame);
         

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InGameInterface : CanvasBaseFunctions
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
 
     private GameStateManager gameStateManager;
     
@@ -14,6 +14,10 @@ public class InGameInterface : CanvasBaseFunctions
         if (gameStateManager != null)
         {
             gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
+        }
+        else
+        {
+            //ERROR GOES HERE
         }
     }
 
