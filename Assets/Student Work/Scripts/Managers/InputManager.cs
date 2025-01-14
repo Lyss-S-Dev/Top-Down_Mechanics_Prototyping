@@ -40,8 +40,19 @@ public class InputManager : MonoBehaviour
 
     private void PAUSEOnperformed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Pause Button Pressed");
-        PauseEvent.Invoke(this, EventArgs.Empty);
+        if (GameStateManager.instance != null)
+        {
+            if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME ||
+                GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.PAUSED)
+            {
+                PauseEvent.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                //do nothing
+            }
+        }
+        
     }
 
     private void ATTACKOnperformed(InputAction.CallbackContext obj)

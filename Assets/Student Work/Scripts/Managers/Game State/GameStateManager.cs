@@ -47,7 +47,11 @@ public class GameStateManager : MonoBehaviour
         }
         else
         {
-            ChangeGameState(GameState.IN_GAME);
+            
+                ChangeGameState(GameState.IN_GAME);
+            
+                
+            
         }
         
     }

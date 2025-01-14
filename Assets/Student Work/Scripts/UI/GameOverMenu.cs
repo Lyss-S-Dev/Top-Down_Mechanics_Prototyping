@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InGameInterface : CanvasBaseFunctions
+public class GameOverMenu : CanvasBaseFunctions
 {
-   
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private GameStateManager gameStateManager;
+
+    private Button restartButton;
+    private Button returnToMenuButton;
     
     void Start()
     {
@@ -17,19 +21,20 @@ public class InGameInterface : CanvasBaseFunctions
         }
         else
         {
-            //Game State manager missing, error
+            //Game State Manager is missing, error
         }
+        
+        Hide();
     }
 
     private void GameStateManagerOnStateHasChanged(object sender, EventArgs e)
     {
-        if (gameStateManager.GetCurrentGameState() != GameStateManager.GameState.IN_GAME)
-        {
-            Hide();
-        }
-        else
+        if (gameStateManager.GetCurrentGameState() == GameStateManager.GameState.GAME_OVER)
         {
             Show();
         }
+        
+        
     }
+
 }

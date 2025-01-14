@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468f1b2da6847754caad9d5d23dd6f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibleTime: 0.5
 --- !u!95 &5241012708771119053
 Animator:
   serializedVersion: 7

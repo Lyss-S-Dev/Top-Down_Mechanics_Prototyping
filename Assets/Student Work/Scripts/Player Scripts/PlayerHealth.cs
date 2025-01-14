@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
 {
 
-    public event EventHandler PlayerTookDamage; 
+    public event EventHandler PlayerTookDamage;
     
     private const float playerMaxHealth = 6;
     private float playerCurrentHealth;
@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (playerStateManager.GetCurrentPlayerState() == PlayerStateManager.PlayerState.NORMAL)
         {
-            ModifyHealth(damageValue);
+            ReduceHealth(damageValue);
         }
         
     }
@@ -30,14 +30,24 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (playerStateManager.GetCurrentPlayerState() == PlayerStateManager.PlayerState.NORMAL)
         {
-            ModifyHealth(damageValue);
+            ReduceHealth(damageValue);
         }
     }
 
-    private void ModifyHealth(float modValue)
+    private void ReduceHealth(float modValue)
     {
         playerCurrentHealth -= modValue;
-        PlayerTookDamage.Invoke(this, EventArgs.Empty);
+        PlayerTookDamage.Invoke(this,EventArgs.Empty);
+
+        if (playerCurrentHealth > 0)
+        {
+            playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.INVINCIBLE);
+        }
+        else
+        {
+            playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.DEAD);
+        }
+        
     }
     
     public float GetPlayerHealth()

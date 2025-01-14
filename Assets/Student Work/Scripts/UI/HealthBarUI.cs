@@ -14,7 +14,11 @@ public class HealthBarUI : MonoBehaviour
     void Start()
     {
         playerHealth = FindFirstObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
-        playerHealth.PlayerTookDamage += OnPlayerTookDamage;
+        if (playerHealth != null)
+        {
+            playerHealth.PlayerTookDamage += OnPlayerTookDamage;
+        }
+        
         
         UpdateHealthBar();
     }

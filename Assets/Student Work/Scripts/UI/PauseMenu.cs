@@ -18,7 +18,7 @@ public class PauseMenu : CanvasBaseFunctions
         }
         else
         {
-            //BIG BAD ERROR
+            //Game state manager missing, error
         }
         
         continueGameButton.onClick.AddListener(ContinueGame);
