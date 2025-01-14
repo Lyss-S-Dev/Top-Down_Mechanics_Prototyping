@@ -88,6 +88,7 @@ public class InputManager : MonoBehaviour
         moveDirection = inputActions.INGAME.MOVE.ReadValue<Vector2>();
         cursorPosition = inputActions.INGAME.LOOK.ReadValue<Vector2>();
         cursorWorldPosition = ConvertCursorToWorldPos();
+        
     }
 
     public Vector2 GetMoveDirection()
@@ -97,7 +98,7 @@ public class InputManager : MonoBehaviour
 
     private Vector3 ConvertCursorToWorldPos()
     {
-        Vector3 cursorPositionWithZ = new Vector3(cursorPosition.x, cursorPosition.y, 10);
+        Vector3 cursorPositionWithZ = new Vector3(cursorPosition.x, cursorPosition.y, -mainCamera.transform.position.z);
         if (mainCamera)
         {
             return mainCamera.ScreenToWorldPoint(cursorPositionWithZ);

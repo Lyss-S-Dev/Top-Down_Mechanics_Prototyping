@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,7 +13,12 @@ public class PlayerStateManager : MonoBehaviour
 
     [SerializeField] private float invincibleTime = 0.5f;
 
-   private  PlayerState currentPlayerState = PlayerState.NORMAL;
+    private PlayerState currentPlayerState;
+
+   private void Start()
+   {
+       ChangePlayerState(PlayerState.NORMAL);
+   }
 
    public void ChangePlayerState(PlayerState stateToChange)
    {

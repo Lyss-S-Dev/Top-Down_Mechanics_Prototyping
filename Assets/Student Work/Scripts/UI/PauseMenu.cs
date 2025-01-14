@@ -54,7 +54,7 @@ public class PauseMenu : CanvasBaseFunctions
 
     private void ReturnToMenuButtonPressed()
     {
-        
+        SceneLoader.instance.HandleLoadScene("Main Menu");
     }
     
 }
