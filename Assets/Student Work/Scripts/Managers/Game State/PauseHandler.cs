@@ -10,6 +10,8 @@ public class PauseHandler : MonoBehaviour
         gameStateManager = GameStateManager.instance;
         
         gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
+
+        Time.timeScale = 1;
     }
 
     private void GameStateManagerOnStateHasChanged(object sender, EventArgs e)

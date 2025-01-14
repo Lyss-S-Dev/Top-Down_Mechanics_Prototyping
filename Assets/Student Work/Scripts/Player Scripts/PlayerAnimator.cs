@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -9,16 +10,13 @@ public class PlayerAnimator : MonoBehaviour
 
     private const string ANIMATOR_IS_RUNNING_STRING = "IS_RUNNING";
     private const string ANIMATOR_IS_ATTACK_STRING = "IS_ATTACK";
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>(); 
         playerMover = GetComponent<PlayerMover>();
-        
-        
-        
     }
+
 
     // Update is called once per frame
     void Update()

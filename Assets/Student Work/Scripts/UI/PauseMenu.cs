@@ -7,6 +7,8 @@ public class PauseMenu : CanvasBaseFunctions
     private GameStateManager gameStateManager;
 
     [SerializeField] private Button continueGameButton;
+    [SerializeField] private Button restartLevelButton;
+    [SerializeField] private Button returnToMenuButton;
     
     private void Start()
     {
@@ -22,6 +24,8 @@ public class PauseMenu : CanvasBaseFunctions
         }
         
         continueGameButton.onClick.AddListener(ContinueGame);
+        restartLevelButton.onClick.AddListener(RestartButtonPressed);
+        returnToMenuButton.onClick.AddListener(ReturnToMenuButtonPressed);
         
         Hide();
     }
@@ -42,5 +46,16 @@ public class PauseMenu : CanvasBaseFunctions
     {
         gameStateManager.ChangeGameState(GameStateManager.GameState.IN_GAME);
     }
+
+    private void RestartButtonPressed()
+    {
+        SceneLoader.instance.RestartCurrentScene();
+    }
+
+    private void ReturnToMenuButtonPressed()
+    {
+        
+    }
+    
 }
     

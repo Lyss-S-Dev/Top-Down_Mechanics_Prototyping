@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
+
+    //public event EventHandler NewSceneIsLoading;
     
     private void Awake()
     {
@@ -18,11 +20,16 @@ public class SceneLoader : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        
+        DontDestroyOnLoad(this.gameObject);
+        
+        
     }
 
     public void HandleLoadScene(string sceneNameToLoad)
     {
         Debug.Log("WE ARE GOING TO LOAD A SCENE");
+        
         StartCoroutine(LoadAsyncScene(sceneNameToLoad));
     }
 
@@ -38,5 +45,10 @@ public class SceneLoader : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public void RestartCurrentScene()
+    {
+        HandleLoadScene(SceneManager.GetActiveScene().name);
     }
 }

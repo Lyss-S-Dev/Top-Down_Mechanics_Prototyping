@@ -37,6 +37,8 @@ public class GameStateManager : MonoBehaviour
     {
         inputManager = InputManager.Instance;
         inputManager.PauseEvent += InputManagerOnPauseEvent;
+
+        currentGameState = GameState.IN_GAME;
     }
 
     private void InputManagerOnPauseEvent(object sender, EventArgs e)

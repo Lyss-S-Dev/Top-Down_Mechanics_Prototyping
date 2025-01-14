@@ -8,8 +8,8 @@ public class GameOverMenu : CanvasBaseFunctions
 
     private GameStateManager gameStateManager;
 
-    private Button restartButton;
-    private Button returnToMenuButton;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button returnToMenuButton;
     
     void Start()
     {
@@ -24,6 +24,10 @@ public class GameOverMenu : CanvasBaseFunctions
             //Game State Manager is missing, error
         }
         
+        restartButton.onClick.AddListener(RestartButtonPressed);
+        returnToMenuButton.onClick.AddListener(ReturnToMenuButtonPressed);
+        
+        
         Hide();
     }
 
@@ -33,6 +37,16 @@ public class GameOverMenu : CanvasBaseFunctions
         {
             Show();
         }
+        
+    }
+
+    private void RestartButtonPressed()
+    {
+        
+    }
+
+    private void ReturnToMenuButtonPressed()
+    {
         
         
     }

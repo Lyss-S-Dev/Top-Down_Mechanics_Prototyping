@@ -1,15 +1,32 @@
+using System;
 using UnityEngine;
 
 public class CanvasBaseFunctions : MonoBehaviour
 {
+
+    private Canvas ownCanvas;
+
+    private void Awake()
+    {
+        ownCanvas = this.GetComponent<Canvas>();
+    }
+
     protected void Show()
     {
-        GetComponent<Canvas>().enabled = true;
+        if (ownCanvas)
+        {
+            ownCanvas.enabled = true;
+        }
+        
     }
 
     protected void Hide()
     {
-        GetComponent<Canvas>().enabled = false;
+        if (ownCanvas)
+        {
+            ownCanvas.enabled = false;
+        }
+        
     }
     
 }
