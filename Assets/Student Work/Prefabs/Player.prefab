@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea70eb76176d74c43bb58f3541848e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamage: 3
+  playerDamage: 2
   attackPoint: {fileID: 8131902872278611021}
   attackBoxSize: {x: 1.2, y: 1, z: 0}
   ignoreLayers:
