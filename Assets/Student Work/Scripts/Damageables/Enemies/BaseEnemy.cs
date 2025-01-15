@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour, IDamageable
 {
-    public enum EnemyState
+    protected enum EnemyState
     {
         IDLE,
         ACTIVE,
@@ -20,11 +20,13 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] protected SOEnemyStats statistics;
 
     private float currentHealth;
-    
 
-    private void Start()
+    protected Rigidbody2D enemyBody;
+
+    protected virtual void Start()
     {
         currentHealth = statistics.maximumHealth;
+        enemyBody = GetComponent<Rigidbody2D>();
         ChangeCurrentState(EnemyState.IDLE);
     }
 
@@ -45,7 +47,10 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         if (currentState != EnemyState.ATTACK)
         {
             ChangeCurrentState(EnemyState.STUN);
+            enemyBody.linearVelocity = Vector2.zero;
+            StartCoroutine(StunCooldown());
             //Knockback if not attacking
+            
         }
         
     }
@@ -64,7 +69,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         Destroy(this.gameObject);
     }
 
-    public EnemyState GetCurrentState()
+    protected EnemyState GetCurrentState()
     {
         return currentState;
     }
@@ -73,5 +78,12 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(statistics.stunTime);
         ChangeCurrentState(EnemyState.ACTIVE);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, statistics.detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, statistics.attackRange);
     }
 }

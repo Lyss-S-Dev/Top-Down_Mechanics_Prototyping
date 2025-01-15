@@ -5,7 +5,34 @@ using UnityEngine;
 public class MeleeEnemy : BaseEnemy
 {
     private Transform playerPosition;
-    
+    private Animator meleeAnimator;
+    [SerializeField] private Transform attackPoint;
+
+    protected override void Start()
+    {
+        base.Start();
+        meleeAnimator = GetComponent<Animator>();
+        playerPosition = FindFirstObjectByType<PlayerHealth>().GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        Debug.Log("I AM IN THE" + GetCurrentState()+ " STATE");
+        if (GetCurrentState() == EnemyState.IDLE)
+        {
+            DetectPlayer();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (GetCurrentState() == EnemyState.ACTIVE)
+        {
+            ChasePlayer();
+            FacePlayer();
+        }
+    }
+
     private void DetectPlayer()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, statistics.detectionRadius, detectionLayers);
@@ -14,7 +41,7 @@ public class MeleeEnemy : BaseEnemy
             if (col.TryGetComponent(out PlayerHealth player) == true)
             {
                 ChangeCurrentState(EnemyState.ACTIVE);
-                playerPosition = col.GetComponent<Transform>();
+                
             }
         }
     }
@@ -23,18 +50,33 @@ public class MeleeEnemy : BaseEnemy
     {
         //move towards player
         //if within melee range, switch to attack
-        if (Vector2.Distance(transform.position, playerPosition.position) > statistics.attackRange)
+        
+        if (Vector2.Distance(transform.position, playerPosition.position) < statistics.attackRange)
         {
-            
+            ChangeCurrentState(EnemyState.ATTACK);
+            AttackPlayer();
+        }
+        else
+        {
+            Vector2 direction = (playerPosition.position - transform.position).normalized;
+            enemyBody.linearVelocity = direction * (statistics.movementSpeed * Time.fixedDeltaTime);
         }
     }
 
     private void AttackPlayer()
     {
-        //play animation
-        //when it ends, return to active state
+        enemyBody.linearVelocity = Vector2.zero;
+        meleeAnimator.SetTrigger("attackTrigger");
+        
     }
     
+    
+   
+    
+    private void FacePlayer()
+    {
+        transform.up = playerPosition.position - transform.position;
+    }
     
     
 }
