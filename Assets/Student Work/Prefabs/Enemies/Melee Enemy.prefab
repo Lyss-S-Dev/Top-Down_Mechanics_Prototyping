@@ -141,6 +141,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   statistics: {fileID: 11400000, guid: b7156aa9a9b540e41ad226e70e37cede, type: 2}
+  attackPoint: {fileID: 0}
 --- !u!50 &8266512136313979219
 Rigidbody2D:
   serializedVersion: 5

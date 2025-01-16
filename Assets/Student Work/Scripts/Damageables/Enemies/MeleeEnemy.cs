@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MeleeEnemy : BaseEnemy
@@ -17,11 +18,14 @@ public class MeleeEnemy : BaseEnemy
 
     private void Update()
     {
-        Debug.Log("I AM IN THE" + GetCurrentState()+ " STATE");
-        if (GetCurrentState() == EnemyState.IDLE)
+        
+
+        if (GetCurrentState() != EnemyState.STUN && GetCurrentState() != EnemyState.ATTACK)
         {
             DetectPlayer();
         }
+            
+        
     }
 
     private void FixedUpdate()
@@ -30,6 +34,11 @@ public class MeleeEnemy : BaseEnemy
         {
             ChasePlayer();
             FacePlayer();
+        }
+
+        if (GetCurrentState() == EnemyState.STUN || GetCurrentState() == EnemyState.ATTACK)
+        {
+            enemyBody.linearVelocity = Vector2.zero;
         }
     }
 
@@ -40,8 +49,10 @@ public class MeleeEnemy : BaseEnemy
         {
             if (col.TryGetComponent(out PlayerHealth player) == true)
             {
-                ChangeCurrentState(EnemyState.ACTIVE);
-                
+                if (GetCurrentState() != EnemyState.ACTIVE)
+                {
+                    ChangeCurrentState(EnemyState.ACTIVE);
+                }
             }
         }
     }
@@ -49,11 +60,10 @@ public class MeleeEnemy : BaseEnemy
     private void ChasePlayer()
     {
         //move towards player
-        //if within melee range, switch to attack
+        //if within melee range, perform the attack
         
-        if (Vector2.Distance(transform.position, playerPosition.position) < statistics.attackRange)
+        if (Vector2.Distance(transform.position, playerPosition.position) <= statistics.attackRange)
         {
-            ChangeCurrentState(EnemyState.ATTACK);
             AttackPlayer();
         }
         else
@@ -65,12 +75,18 @@ public class MeleeEnemy : BaseEnemy
 
     private void AttackPlayer()
     {
+        ChangeCurrentState(EnemyState.ATTACK);
         enemyBody.linearVelocity = Vector2.zero;
         meleeAnimator.SetTrigger("attackTrigger");
         
     }
+
+    //enemy damage event goes here
     
-    
+    public void EndAttack()
+    {
+        ChangeCurrentState(EnemyState.ACTIVE);
+    }
    
     
     private void FacePlayer()
