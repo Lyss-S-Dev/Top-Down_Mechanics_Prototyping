@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseEnemy : MonoBehaviour, IDamageable
 {
@@ -14,20 +15,34 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         
     }
 
-    [SerializeField] protected LayerMask detectionLayers;
-
+    protected Transform playerPosition;
+    
     private EnemyState currentState;
+    
+    [SerializeField] protected LayerMask playerLayer;
+    
     [SerializeField] protected SOEnemyStats statistics;
-
     private float currentHealth;
 
     protected Rigidbody2D enemyBody;
 
+    protected bool canAttack = true;
+
+    
     protected virtual void Start()
     {
         currentHealth = statistics.maximumHealth;
         enemyBody = GetComponent<Rigidbody2D>();
+        playerPosition = FindFirstObjectByType<PlayerHealth>().GetComponent<Transform>();
         ChangeCurrentState(EnemyState.IDLE);
+    }
+
+    protected virtual void Update()
+    {
+        if (GetCurrentState() != EnemyState.STUN && GetCurrentState() != EnemyState.ATTACK)
+        {
+            DetectPlayer();
+        }
     }
 
     protected void ChangeCurrentState(EnemyState stateToChange)
@@ -43,11 +58,15 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damageValue, Transform damageSource)
     {
         ChangeHealth(damageValue);
-
+        
+        
+        //if the enemy is not currently attacking, they become stunned momentarily
         if (currentState != EnemyState.ATTACK)
         {
+            
             ChangeCurrentState(EnemyState.STUN);
             enemyBody.linearVelocity = Vector2.zero;
+            enemyBody.bodyType = RigidbodyType2D.Kinematic;
             StartCoroutine(StunCooldown());
             //Knockback if not attacking
             
@@ -73,17 +92,48 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         return currentState;
     }
+    
+    private void DetectPlayer()
+    {
+        //create an overlap circle
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, statistics.detectionRadius, playerLayer);
+        foreach (Collider2D col in hits)
+        {
+            //check if the collider has the player health component
+            if (col.TryGetComponent(out PlayerHealth player) == true)
+            {
+                if (GetCurrentState() != EnemyState.ACTIVE)
+                {
+                    ChangeCurrentState(EnemyState.ACTIVE);
+                }
+            }
+        }
+    }
+    
+    protected void FacePlayer()
+    {
+        transform.up = playerPosition.position - transform.position;
+    }
 
     private IEnumerator StunCooldown()
     {
         yield return new WaitForSeconds(statistics.stunTime);
+        enemyBody.bodyType = RigidbodyType2D.Dynamic;
         ChangeCurrentState(EnemyState.ACTIVE);
     }
 
-    private void OnDrawGizmosSelected()
+    protected IEnumerator AttackCooldown()
     {
-        Gizmos.color = Color.red;
+        canAttack = false;
+        yield return new WaitForSeconds(statistics.attackCooldown);
+        canAttack = true;
+    }
+
+    protected virtual void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, statistics.detectionRadius);
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, statistics.attackRange);
     }
 }

@@ -19,4 +19,5 @@ public class SOEnemyStats : ScriptableObject
     [Header("Attack")] 
     public float attackRange;
     public float attackDamage;
+    public float attackCooldown;
 }

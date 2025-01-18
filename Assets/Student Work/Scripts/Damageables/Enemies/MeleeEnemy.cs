@@ -5,27 +5,15 @@ using UnityEngine;
 
 public class MeleeEnemy : BaseEnemy
 {
-    private Transform playerPosition;
     private Animator meleeAnimator;
     [SerializeField] private Transform attackPoint;
-
+    [SerializeField] private Vector3 attackBoxSize;
+    
+    
     protected override void Start()
     {
         base.Start();
         meleeAnimator = GetComponent<Animator>();
-        playerPosition = FindFirstObjectByType<PlayerHealth>().GetComponent<Transform>();
-    }
-
-    private void Update()
-    {
-        
-
-        if (GetCurrentState() != EnemyState.STUN && GetCurrentState() != EnemyState.ATTACK)
-        {
-            DetectPlayer();
-        }
-            
-        
     }
 
     private void FixedUpdate()
@@ -35,36 +23,17 @@ public class MeleeEnemy : BaseEnemy
             ChasePlayer();
             FacePlayer();
         }
-
-        if (GetCurrentState() == EnemyState.STUN || GetCurrentState() == EnemyState.ATTACK)
-        {
-            enemyBody.linearVelocity = Vector2.zero;
-        }
     }
-
-    private void DetectPlayer()
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, statistics.detectionRadius, detectionLayers);
-        foreach (Collider2D col in hits)
-        {
-            if (col.TryGetComponent(out PlayerHealth player) == true)
-            {
-                if (GetCurrentState() != EnemyState.ACTIVE)
-                {
-                    ChangeCurrentState(EnemyState.ACTIVE);
-                }
-            }
-        }
-    }
-
+    
     private void ChasePlayer()
     {
-        //move towards player
-        //if within melee range, perform the attack
         
-        if (Vector2.Distance(transform.position, playerPosition.position) <= statistics.attackRange)
+        //if within melee range, perform the attack
+        //otherwise move towards the player
+        
+        if (Vector2.Distance(transform.position, playerPosition.position) <= statistics.attackRange && canAttack)
         {
-            AttackPlayer();
+            StartAttack();
         }
         else
         {
@@ -73,26 +42,48 @@ public class MeleeEnemy : BaseEnemy
         }
     }
 
-    private void AttackPlayer()
+    private void StartAttack()
     {
+        //switch state to attack, stop moving and start the attack animation
         ChangeCurrentState(EnemyState.ATTACK);
         enemyBody.linearVelocity = Vector2.zero;
+        enemyBody.bodyType = RigidbodyType2D.Kinematic;
         meleeAnimator.SetTrigger("attackTrigger");
         
     }
 
-    //enemy damage event goes here
+    public void HandleAttack()
+    {
+        //this method is called during the melee enemy attack via an animation event
+        Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0f, playerLayer);
+
+        foreach (Collider2D col in targets)
+        {
+            if (col.gameObject.TryGetComponent(out IDamageable player))
+            {
+                player.TakeDamage(statistics.attackDamage);
+            }
+        }
+
+        StartCoroutine(AttackCooldown());
+    }
+    
+    
     
     public void EndAttack()
     {
+        //this method is called at the end of the melee enemy attack via an animation event
+        enemyBody.bodyType = RigidbodyType2D.Dynamic;
         ChangeCurrentState(EnemyState.ACTIVE);
     }
    
     
-    private void FacePlayer()
+    
+
+    protected override void OnDrawGizmosSelected()
     {
-        transform.up = playerPosition.position - transform.position;
+        base.OnDrawGizmosSelected();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(attackPoint.position, attackBoxSize);
     }
-    
-    
 }
