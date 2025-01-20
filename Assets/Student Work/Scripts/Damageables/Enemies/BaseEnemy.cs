@@ -68,7 +68,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             enemyBody.linearVelocity = Vector2.zero;
             enemyBody.bodyType = RigidbodyType2D.Kinematic;
             StartCoroutine(StunCooldown());
-            //Knockback if not attacking
+            
             
         }
         

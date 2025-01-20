@@ -6,6 +6,10 @@ public class RangedEnemy : BaseEnemy
     private Animator rangedAnimator;
 
     private bool aimIsLocked = false;
+
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private float projectileSpeed;
     
     protected override void Start()
     {
@@ -29,11 +33,16 @@ public class RangedEnemy : BaseEnemy
 
     private void ActiveBehaviour()
     {
-        //if far away from player and not already attacking, move away in a random direction
-        //else, begin ranged attack
+        
     }
 
-    public void LockAim()
+    protected void ShootProjectile()
+    {
+        GameObject spawnedProjectile = Instantiate(projectile, projectileSpawnPoint.position,this.transform.rotation);
+        spawnedProjectile.GetComponent<BasicProjectile>().SetUpProjectile(statistics.attackDamage, projectileSpeed);
+    }
+    
+    protected void LockAim()
     {
         aimIsLocked = true;
     }

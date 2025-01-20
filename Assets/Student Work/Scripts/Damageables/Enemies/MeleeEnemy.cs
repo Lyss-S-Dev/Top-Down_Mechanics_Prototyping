@@ -52,7 +52,7 @@ public class MeleeEnemy : BaseEnemy
         
     }
 
-    public void HandleAttack()
+    protected void HandleAttack()
     {
         //this method is called during the melee enemy attack via an animation event
         Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0f, playerLayer);
