@@ -18,4 +18,4 @@ MonoBehaviour:
   detectionRadius: 7
   attackRange: 0
   attackDamage: 1
-  attackCooldown: 1
+  attackCooldown: 2
