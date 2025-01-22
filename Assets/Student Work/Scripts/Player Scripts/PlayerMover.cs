@@ -11,6 +11,8 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     private bool isRunning;
+
+    [SerializeField] private Transform cameraFollowTarget;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,5 +43,10 @@ public class PlayerMover : MonoBehaviour
     public bool GetIsRunning()
     {
         return isRunning;
+    }
+
+    public Transform GetFollowTarget()
+    {
+        return cameraFollowTarget;
     }
 }

@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void ReduceHealth(float modValue)
     {
         playerCurrentHealth -= modValue;
+        VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
         PlayerTookDamage.Invoke(this,EventArgs.Empty);
 
         if (playerCurrentHealth > 0)

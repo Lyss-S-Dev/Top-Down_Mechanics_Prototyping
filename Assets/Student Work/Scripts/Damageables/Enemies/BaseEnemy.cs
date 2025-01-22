@@ -77,9 +77,14 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     private void ChangeHealth(float modValue)
     {
         currentHealth -= modValue;
+        
         if (currentHealth <= 0)
         {
             EnemyDeath();
+        }
+        else
+        {
+            VFXManager.Instance.DamageFlash(GetComponentInChildren<SpriteRenderer>());
         }
     }
 

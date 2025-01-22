@@ -1,0 +1,39 @@
+using System.Collections;
+using UnityEngine;
+
+public class VFXManager : MonoBehaviour
+{
+   
+    public static VFXManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+
+    public void DamageFlash(SpriteRenderer spriteToFlash)
+    {
+        if (spriteToFlash != null)
+        {
+            Color originalColour = spriteToFlash.color;
+            StartCoroutine(DamageFlashDuration(spriteToFlash, originalColour));
+        }
+        
+    }
+
+    private IEnumerator DamageFlashDuration(SpriteRenderer flashingSprite, Color originalColour)
+    {
+        flashingSprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        flashingSprite.color = originalColour;
+    }
+    
+}
