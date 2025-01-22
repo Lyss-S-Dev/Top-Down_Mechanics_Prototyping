@@ -59,6 +59,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         ChangeHealth(damageValue);
         GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
         spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
+        ScoringManager.instance.TickUpActionCounter();
         
         //if the enemy is not currently attacking, they become stunned momentarily
         if (currentState != EnemyState.ATTACK)
