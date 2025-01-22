@@ -28,13 +28,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
         
     }
-    public void TakeDamage(float damageValue, Transform damageSource)
+    public void TakeDamage(float damageValue, Vector3 damageSource)
     {
         if (playerStateManager.GetCurrentPlayerState() == PlayerStateManager.PlayerState.NORMAL)
         {
             ReduceHealth(damageValue);
             GameObject createdParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
-            createdParticles.transform.up = createdParticles.transform.position - damageSource.position;
+            createdParticles.transform.up = createdParticles.transform.position - damageSource;
         }
     }
 

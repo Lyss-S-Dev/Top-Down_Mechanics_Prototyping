@@ -61,7 +61,7 @@ public class MeleeEnemy : BaseEnemy
         {
             if (col.gameObject.TryGetComponent(out IDamageable player))
             {
-                player.TakeDamage(statistics.attackDamage);
+                player.TakeDamage(statistics.attackDamage, this.transform.position);
             }
         }
 

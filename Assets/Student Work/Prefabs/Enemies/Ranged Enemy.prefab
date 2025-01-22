@@ -142,6 +142,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   statistics: {fileID: 11400000, guid: 39a2dd68ab817a24181e8a677112a90b, type: 2}
+  damageParticles: {fileID: 7550673564881290082, guid: 3e65b0b1f16ce0f4b998d27b522fd32b, type: 3}
   projectile: {fileID: 317817921711113016, guid: 9cc46dd53b162754088ee372dff91633, type: 3}
   projectileSpawnPoint: {fileID: 977450139918706371}
   projectileSpeed: 400

@@ -12,12 +12,12 @@ public class BreakableObject : MonoBehaviour, IDamageable
            Destroy(this.gameObject);
        }
        
-       public void TakeDamage(float damageValue, Transform damageSource)
+       public void TakeDamage(float damageValue, Vector3 damageSource)
        {
               if (brokenObjectParticles != null)
               {
                    GameObject createdParticles = Instantiate(brokenObjectParticles, transform.position, quaternion.identity);
-                   createdParticles.transform.up = createdParticles.transform.position - damageSource.position;
+                   createdParticles.transform.up = createdParticles.transform.position - damageSource;
               }
               
               Destroy(this.gameObject);

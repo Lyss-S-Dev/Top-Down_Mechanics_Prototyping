@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -26,7 +27,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
     protected bool canAttack = true;
 
-    
+    [SerializeField] private GameObject damageParticles;
     protected virtual void Start()
     {
         currentHealth = statistics.maximumHealth;
@@ -53,9 +54,11 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         ChangeHealth(damageValue);
     }
 
-    public void TakeDamage(float damageValue, Transform damageSource)
+    public void TakeDamage(float damageValue, Vector3 damageSource)
     {
         ChangeHealth(damageValue);
+        GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
+        spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
         
         //if the enemy is not currently attacking, they become stunned momentarily
         if (currentState != EnemyState.ATTACK)
@@ -74,6 +77,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         
         if (currentHealth <= 0)
         {
+            ScoringManager.instance.UpdatePlayerScore(statistics.pointsValue);
             EnemyDeath();
         }
         else

@@ -33,7 +33,7 @@ public class BasicProjectile : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent(out PlayerHealth player))
         {
-            player.TakeDamage(projectileDamage);
+            player.TakeDamage(projectileDamage, this.transform.position);
             Destroy(this.gameObject);
         }
         else

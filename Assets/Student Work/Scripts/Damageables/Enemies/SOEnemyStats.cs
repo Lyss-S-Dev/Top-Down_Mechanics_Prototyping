@@ -20,4 +20,8 @@ public class SOEnemyStats : ScriptableObject
     public float attackRange;
     public float attackDamage;
     public float attackCooldown;
+
+    [Space(10)] 
+    [Header("Points")] 
+    public int pointsValue;
 }

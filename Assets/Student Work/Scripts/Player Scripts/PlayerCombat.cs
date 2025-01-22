@@ -46,7 +46,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (t.gameObject.TryGetComponent(out IDamageable d))
             {
-                d.TakeDamage(playerDamage, this.transform);
+                d.TakeDamage(playerDamage, this.transform.position);
                 followTarget.Shake(0.11f);
                 
             }

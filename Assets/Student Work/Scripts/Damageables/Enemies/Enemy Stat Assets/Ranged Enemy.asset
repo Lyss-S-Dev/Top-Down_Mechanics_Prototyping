@@ -19,3 +19,4 @@ MonoBehaviour:
   attackRange: 0
   attackDamage: 1
   attackCooldown: 2
+  pointsValue: 100
