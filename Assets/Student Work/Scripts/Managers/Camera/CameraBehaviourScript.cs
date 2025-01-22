@@ -1,5 +1,3 @@
-using System.Collections;
-
 using UnityEngine;
 
 public class CameraBehaviourScript : MonoBehaviour
@@ -24,6 +22,4 @@ public class CameraBehaviourScript : MonoBehaviour
         }
         
     }
-
-    
 }

@@ -1,37 +1,36 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class HealthBarUI : MonoBehaviour
 {
     private PlayerHealth playerHealth;
-
     [SerializeField] private RectTransform[] healthPips;
-
-    
-    private 
-    void Start()
+    private Animator healthBarAnimator;
+    private void Start()
     {
+        healthBarAnimator = GetComponent<Animator>();
+        
         playerHealth = FindFirstObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
             playerHealth.PlayerTookDamage += OnPlayerTookDamage;
         }
-        
-        
         UpdateHealthBar();
     }
 
     private void OnPlayerTookDamage(object sender, EventArgs e)
     {
         UpdateHealthBar();
+        ShakeUIElement();
     }
 
     private void UpdateHealthBar()
     {
         float currentPlayerHealth = playerHealth.GetPlayerHealth();
-       
 
         for (int i = 0; i < healthPips.Length; i++)
         {
@@ -45,4 +44,11 @@ public class HealthBarUI : MonoBehaviour
             }
         }
     }
+
+    private void ShakeUIElement()
+    {
+        healthBarAnimator.SetTrigger("Shake");
+    }
+
+    
 }

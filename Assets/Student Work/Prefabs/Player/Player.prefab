@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea70eb76176d74c43bb58f3541848e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: {fileID: 6729984603090944780}
   playerDamage: 2
   attackPoint: {fileID: 8131902872278611021}
   attackBoxSize: {x: 1.2, y: 1, z: 0}
@@ -250,6 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0326a3ff4adee294c90b72d808a67ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: {fileID: 6729984603090944780}
+  damageParticles: {fileID: 7550673564881290082, guid: 3e65b0b1f16ce0f4b998d27b522fd32b, type: 3}
 --- !u!114 &2707339903677164528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7759550320360554928}
+  - component: {fileID: 6729984603090944780}
   m_Layer: 6
   m_Name: Camera Follow Target
   m_TagString: Untagged
@@ -592,6 +596,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7008384535874747474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6729984603090944780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362277081364234767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc561dcf16cb1f488e4f6dd2ecf0450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6899643866751866340
 GameObject:
   m_ObjectHideFlags: 0

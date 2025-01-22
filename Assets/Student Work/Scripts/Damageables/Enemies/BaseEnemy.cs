@@ -1,8 +1,6 @@
-
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class BaseEnemy : MonoBehaviour, IDamageable
 {
@@ -39,7 +37,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
-        if (GetCurrentState() != EnemyState.STUN && GetCurrentState() != EnemyState.ATTACK)
+        if (GetCurrentState() == EnemyState.IDLE)
         {
             DetectPlayer();
         }
@@ -59,7 +57,6 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         ChangeHealth(damageValue);
         
-        
         //if the enemy is not currently attacking, they become stunned momentarily
         if (currentState != EnemyState.ATTACK)
         {
@@ -68,10 +65,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             enemyBody.linearVelocity = Vector2.zero;
             enemyBody.bodyType = RigidbodyType2D.Kinematic;
             StartCoroutine(StunCooldown());
-            
-            
         }
-        
     }
 
     private void ChangeHealth(float modValue)
@@ -104,13 +98,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, statistics.detectionRadius, playerLayer);
         foreach (Collider2D col in hits)
         {
-            //check if the collider has the player health component
-            if (col.TryGetComponent(out PlayerHealth player) == true)
+            if (col.GetComponent<PlayerHealth>())
             {
-                if (GetCurrentState() != EnemyState.ACTIVE)
-                {
-                    ChangeCurrentState(EnemyState.ACTIVE);
-                }
+                ChangeCurrentState(EnemyState.ACTIVE);
             }
         }
     }

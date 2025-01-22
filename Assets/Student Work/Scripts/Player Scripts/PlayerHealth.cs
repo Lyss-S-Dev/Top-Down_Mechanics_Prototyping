@@ -1,16 +1,18 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
-
 {
-
     public event EventHandler PlayerTookDamage;
     
     private const float playerMaxHealth = 6;
     private float playerCurrentHealth;
 
     private PlayerStateManager playerStateManager;
+
+    [SerializeField] FollowTargetBehaviour followTarget;
+    [SerializeField] private GameObject damageParticles;
 
     private void Awake()
     {
@@ -31,6 +33,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (playerStateManager.GetCurrentPlayerState() == PlayerStateManager.PlayerState.NORMAL)
         {
             ReduceHealth(damageValue);
+            GameObject createdParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
+            createdParticles.transform.up = createdParticles.transform.position - damageSource.position;
         }
     }
 
@@ -38,6 +42,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         playerCurrentHealth -= modValue;
         VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
+        followTarget.Shake(0.2f);
         PlayerTookDamage.Invoke(this,EventArgs.Empty);
 
         if (playerCurrentHealth > 0)

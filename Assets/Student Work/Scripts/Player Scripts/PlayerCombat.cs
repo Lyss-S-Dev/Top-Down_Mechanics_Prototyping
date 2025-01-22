@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    
-    
     private InputManager inputManager;
     private PlayerAnimator playerAnimator;
+    [SerializeField] private FollowTargetBehaviour followTarget;
 
     [SerializeField] private float playerDamage;
     
@@ -45,11 +44,10 @@ public class PlayerCombat : MonoBehaviour
         
         foreach(Collider2D t in targets)
         {
-            if (t.gameObject.TryGetComponent(out IDamageable d) == true)
+            if (t.gameObject.TryGetComponent(out IDamageable d))
             {
-                
                 d.TakeDamage(playerDamage, this.transform);
-                
+                followTarget.Shake(0.11f);
                 
             }
         }

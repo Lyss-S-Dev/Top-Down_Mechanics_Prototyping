@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class RangedEnemy : BaseEnemy
 {
     private Animator rangedAnimator;
 
-    private bool aimIsLocked = false;
+    private bool aimIsLocked;
     
-
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private float projectileSpeed;
@@ -24,13 +21,14 @@ public class RangedEnemy : BaseEnemy
         if (GetCurrentState() == EnemyState.ACTIVE)
         {
             ActiveBehaviour();
-            
         }
 
         if (GetCurrentState() != EnemyState.IDLE && !aimIsLocked)
         {
             FacePlayer();
         }
+
+        enemyBody.linearVelocity = Vector2.zero;
     }
 
     private void ActiveBehaviour()
@@ -71,11 +69,4 @@ public class RangedEnemy : BaseEnemy
     {
         aimIsLocked = false;
     }
-
-    private IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(statistics.attackCooldown);
-        canAttack = true;
-    }
-    
 }
