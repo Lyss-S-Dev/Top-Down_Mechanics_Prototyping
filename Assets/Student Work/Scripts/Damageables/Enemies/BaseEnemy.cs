@@ -19,6 +19,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     private EnemyState currentState;
     
     [SerializeField] protected LayerMask playerLayer;
+    [SerializeField] protected LayerMask detectionIgnoreLayer;
     
     [SerializeField] protected SOEnemyStats statistics;
     private float currentHealth;
@@ -36,7 +37,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         ChangeCurrentState(EnemyState.IDLE);
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (GetCurrentState() == EnemyState.IDLE)
         {
@@ -99,11 +100,10 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     
     private void DetectPlayer()
     {
-        //create an overlap circle
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, statistics.detectionRadius, playerLayer);
-        foreach (Collider2D col in hits)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (playerPosition.position - transform.position).normalized, statistics.detectionRadius, ~detectionIgnoreLayer);
+        if (hit)
         {
-            if (col.GetComponent<PlayerHealth>())
+            if (hit.transform.GetComponent<PlayerHealth>())
             {
                 ChangeCurrentState(EnemyState.ACTIVE);
             }

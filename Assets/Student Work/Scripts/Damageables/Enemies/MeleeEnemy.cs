@@ -16,8 +16,9 @@ public class MeleeEnemy : BaseEnemy
         meleeAnimator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         if (GetCurrentState() == EnemyState.ACTIVE)
         {
             ChasePlayer();

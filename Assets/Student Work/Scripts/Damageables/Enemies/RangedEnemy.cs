@@ -16,8 +16,10 @@ public class RangedEnemy : BaseEnemy
         rangedAnimator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
-    {
+     protected override void FixedUpdate()
+    { 
+        base.FixedUpdate();
+        
         if (GetCurrentState() == EnemyState.ACTIVE)
         {
             ActiveBehaviour();

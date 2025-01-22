@@ -5,11 +5,11 @@ using UnityEngine;
 public class BreakableObject : MonoBehaviour, IDamageable
 {
        [SerializeField] private GameObject brokenObjectParticles;
-
+       [SerializeField] private int scoreValue = 10;
 
        public void TakeDamage(float damageValue)
        {
-           Destroy(this.gameObject);
+           ObjectDestruction();
        }
        
        public void TakeDamage(float damageValue, Vector3 damageSource)
@@ -20,8 +20,14 @@ public class BreakableObject : MonoBehaviour, IDamageable
                    createdParticles.transform.up = createdParticles.transform.position - damageSource;
               }
               
-              Destroy(this.gameObject);
+              ObjectDestruction();
        }
 
+       private void ObjectDestruction()
+       {
+           ScoringManager.instance.UpdatePlayerScore(scoreValue);
+           ScoringManager.instance.TickUpActionCounter();
+           Destroy(this.gameObject);
+       }
        
 }
