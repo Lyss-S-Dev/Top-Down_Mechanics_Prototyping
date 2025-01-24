@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7bc3b0f700db34f95ec76a364dece2, type: 3}
   m_Name: Melee Enemy
   m_EditorClassIdentifier: 
-  maximumHealth: 4
-  stunTime: 0.5
-  movementSpeed: 350
+  maximumHealth: 5
+  stunTime: 0.3
+  movementSpeed: 400
   detectionRadius: 5
-  attackRange: 0.8
+  attackRange: 0.9
   attackDamage: 1
-  attackCooldown: 0.7
+  attackCooldown: 0.6
   pointsValue: 150

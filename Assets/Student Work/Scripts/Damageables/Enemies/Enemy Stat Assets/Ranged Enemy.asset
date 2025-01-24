@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7bc3b0f700db34f95ec76a364dece2, type: 3}
   m_Name: Ranged Enemy
   m_EditorClassIdentifier: 
-  maximumHealth: 2
+  maximumHealth: 3
   stunTime: 0
   movementSpeed: 250
   detectionRadius: 7
   attackRange: 0
   attackDamage: 1
-  attackCooldown: 2
-  pointsValue: 100
+  attackCooldown: 1.2
+  pointsValue: 125

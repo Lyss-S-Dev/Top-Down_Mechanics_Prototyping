@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RangedEnemy : BaseEnemy
@@ -9,11 +10,16 @@ public class RangedEnemy : BaseEnemy
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private float projectileSpeed;
+
+    private LineRenderer aimLine;
+    private bool aimLineIsActive;
     
     protected override void Start()
     {
         base.Start();
         rangedAnimator = GetComponent<Animator>();
+        aimLine = GetComponent<LineRenderer>();
+        HideAimLine();
     }
 
      protected override void FixedUpdate()
@@ -33,6 +39,18 @@ public class RangedEnemy : BaseEnemy
         enemyBody.linearVelocity = Vector2.zero;
     }
 
+    private void Update()
+    {
+        if (aimLineIsActive)
+        {
+            aimLine.SetPosition(1, new Vector3(0, projectileSpawnPoint.localPosition.y + statistics.detectionRadius, 0f));
+        }
+        else
+        {
+            aimLine.SetPosition(1, Vector3.zero);
+        }
+    }
+
     private void ActiveBehaviour()
     {
         if (canAttack)
@@ -47,6 +65,7 @@ public class RangedEnemy : BaseEnemy
         ChangeCurrentState(EnemyState.ATTACK);
         enemyBody.bodyType = RigidbodyType2D.Kinematic;
         rangedAnimator.SetTrigger("Attacking");
+        ShowAimLine();
     }
     protected void ShootProjectile()
     {
@@ -60,6 +79,7 @@ public class RangedEnemy : BaseEnemy
         UnlockAim();
         enemyBody.bodyType = RigidbodyType2D.Dynamic;
         StartCoroutine(AttackCooldown());
+        
     }
     
     protected void LockAim()
@@ -70,5 +90,14 @@ public class RangedEnemy : BaseEnemy
     private void UnlockAim()
     {
         aimIsLocked = false;
+    }
+
+    protected void ShowAimLine()
+    {
+        aimLineIsActive = true;
+    }
+    protected void HideAimLine()
+    {
+        aimLineIsActive = false;
     }
 }
