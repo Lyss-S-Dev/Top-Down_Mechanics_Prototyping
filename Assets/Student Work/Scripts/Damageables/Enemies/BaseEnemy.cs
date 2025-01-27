@@ -105,6 +105,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         {
             if (hit.transform.GetComponent<PlayerHealth>())
             {
+                VFXManager.Instance.SpawnAlertParticle(this.transform.position);
                 ChangeCurrentState(EnemyState.ACTIVE);
             }
         }

@@ -23,32 +23,40 @@ public class RangedEnemy : BaseEnemy
     }
 
      protected override void FixedUpdate()
-    { 
-        base.FixedUpdate();
+    {
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        {
+            base.FixedUpdate();
         
-        if (GetCurrentState() == EnemyState.ACTIVE)
-        {
-            ActiveBehaviour();
-        }
+            if (GetCurrentState() == EnemyState.ACTIVE)
+            {
+                ActiveBehaviour();
+            }
 
-        if (GetCurrentState() != EnemyState.IDLE && !aimIsLocked)
-        {
-            FacePlayer();
-        }
+            if (GetCurrentState() != EnemyState.IDLE && !aimIsLocked)
+            {
+                FacePlayer();
+            }
 
-        enemyBody.linearVelocity = Vector2.zero;
+            enemyBody.linearVelocity = Vector2.zero;
+        }
+        
     }
 
     private void Update()
     {
-        if (aimLineIsActive)
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
-            aimLine.SetPosition(1, new Vector3(0, projectileSpawnPoint.localPosition.y + statistics.detectionRadius, 0f));
+            if (aimLineIsActive)
+            {
+                aimLine.SetPosition(1, new Vector3(0, projectileSpawnPoint.localPosition.y + statistics.detectionRadius, 0f));
+            }
+            else
+            {
+                aimLine.SetPosition(1, Vector3.zero);
+            }
         }
-        else
-        {
-            aimLine.SetPosition(1, Vector3.zero);
-        }
+        
     }
 
     private void ActiveBehaviour()

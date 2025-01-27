@@ -1,10 +1,13 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
    
     public static VFXManager Instance;
+
+    [SerializeField] private GameObject alertParticle;
 
     private void Awake()
     {
@@ -27,6 +30,11 @@ public class VFXManager : MonoBehaviour
             StartCoroutine(DamageFlashDuration(spriteToFlash, originalColour));
         }
         
+    }
+
+    public void SpawnAlertParticle(Vector3 worldPosition)
+    {
+        Instantiate(alertParticle, worldPosition, quaternion.identity);
     }
 
     private IEnumerator DamageFlashDuration(SpriteRenderer flashingSprite, Color originalColour)

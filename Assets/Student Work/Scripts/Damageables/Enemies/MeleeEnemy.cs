@@ -18,12 +18,16 @@ public class MeleeEnemy : BaseEnemy
 
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
-        if (GetCurrentState() == EnemyState.ACTIVE)
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
-            ChasePlayer();
-            FacePlayer();
+             base.FixedUpdate();
+             if (GetCurrentState() == EnemyState.ACTIVE)
+             {
+                 ChasePlayer();
+                 FacePlayer();
+             }
         }
+       
     }
     
     private void ChasePlayer()

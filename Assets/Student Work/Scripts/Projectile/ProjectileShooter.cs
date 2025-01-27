@@ -19,14 +19,18 @@ public class ProjectileShooter : MonoBehaviour
 
     private void Update()
     {
-        spawnCooldownTimer -= Time.fixedDeltaTime;
-        
-        
-        if (spawnCooldownTimer <= 0f)
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
-            SpawnProjectile();
-            ResetCooldownTimer();
+            spawnCooldownTimer -= Time.fixedDeltaTime;
+        
+        
+            if (spawnCooldownTimer <= 0f)
+            {
+                SpawnProjectile();
+                ResetCooldownTimer();
+            }
         }
+        
     }
 
     private void SpawnProjectile()

@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
     {
         
         //draw overlap shape at attack point
-        Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, 0f, ~ignoreLayers);
+        Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, transform.rotation.z, ~ignoreLayers);
         
         foreach(Collider2D t in targets)
         {

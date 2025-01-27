@@ -17,6 +17,7 @@ public class GameStateManager : MonoBehaviour
         PAUSED, 
         GAME_OVER,
         END_OF_LEVEL,
+        CUTSCENE,
     }
 
     private GameState currentGameState = GameState.IN_GAME;
@@ -49,11 +50,7 @@ public class GameStateManager : MonoBehaviour
         }
         else
         {
-            
                 ChangeGameState(GameState.IN_GAME);
-            
-                
-            
         }
         
     }
