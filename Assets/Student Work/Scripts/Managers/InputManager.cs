@@ -21,7 +21,6 @@ public class InputManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            
         }
         else
         {
@@ -66,12 +65,7 @@ public class InputManager : MonoBehaviour
                 }
                     
             }
-            else
-            {
-                //do nothing
-            }
         }
-        
     }
 
     private void ATTACKOnperformed(InputAction.CallbackContext obj)
@@ -88,7 +82,6 @@ public class InputManager : MonoBehaviour
         moveDirection = inputActions.INGAME.MOVE.ReadValue<Vector2>();
         cursorPosition = inputActions.INGAME.LOOK.ReadValue<Vector2>();
         cursorWorldPosition = ConvertCursorToWorldPos();
-        
     }
 
     public Vector2 GetMoveDirection()
@@ -103,11 +96,8 @@ public class InputManager : MonoBehaviour
         {
             return mainCamera.ScreenToWorldPoint(cursorPositionWithZ);
         }
-        else
-        {
-            
-            return Vector3.zero;
-        }
+
+        return Vector3.zero;
     }
 
     public Vector3 GetCursorWorldPosition()

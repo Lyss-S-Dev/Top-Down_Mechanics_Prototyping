@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 public class InGameInterface : CanvasBaseFunctions
 {
@@ -19,6 +20,8 @@ public class InGameInterface : CanvasBaseFunctions
         {
             //Game State manager missing, error
         }
+
+        Hide();
     }
 
     private void GameStateManagerOnStateHasChanged(object sender, EventArgs e)

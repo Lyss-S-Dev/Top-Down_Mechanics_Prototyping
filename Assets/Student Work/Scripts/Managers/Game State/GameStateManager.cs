@@ -20,7 +20,7 @@ public class GameStateManager : MonoBehaviour
         CUTSCENE,
     }
 
-    private GameState currentGameState = GameState.IN_GAME;
+    private GameState currentGameState;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class GameStateManager : MonoBehaviour
         inputManager = InputManager.Instance;
         inputManager.PauseEvent += InputManagerOnPauseEvent;
 
-        currentGameState = GameState.IN_GAME;
+        LevelStartSequence();
     }
 
     private void InputManagerOnPauseEvent(object sender, EventArgs e)
@@ -65,5 +65,12 @@ public class GameStateManager : MonoBehaviour
     {
         return currentGameState;
     }
+
+    private void LevelStartSequence()
+    {
+        currentGameState = GameState.CUTSCENE;
+    }
+    
+    
 
 }

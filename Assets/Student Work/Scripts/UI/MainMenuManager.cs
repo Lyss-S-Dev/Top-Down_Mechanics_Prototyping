@@ -23,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
         //call reference to scene loader
         //load first scene
         Debug.Log("START BUTTON PRESSED");
-        SceneLoader.instance.HandleLoadScene("Testing Scene");
+        SceneLoader.instance.HandleLoadScene("Level 1");
     }
 
     private void HandleExitButtonClicked()

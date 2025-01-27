@@ -32,7 +32,11 @@ public class PlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        {
+            HandleMovement();
+        }
+        
     }
 
     private void HandleMovement()
