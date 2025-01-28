@@ -9,7 +9,7 @@ public class PlayerSpawnPoint : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        GameObject spawnedPlayer = Instantiate(playerPrefab, this.transform.position, quaternion.identity);
+        Instantiate(playerPrefab, this.transform.position, quaternion.identity);
     }
 
     

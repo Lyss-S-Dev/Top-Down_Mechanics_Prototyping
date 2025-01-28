@@ -16,7 +16,7 @@ public class CameraBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (followTarget)
+        if (followTarget && target)
         {
             transform.position = new Vector3(target.position.x, target.position.y, zOffset);
         }

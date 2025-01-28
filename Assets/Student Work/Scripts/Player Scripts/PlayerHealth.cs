@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] FollowTargetBehaviour followTarget;
     [SerializeField] private GameObject damageParticles;
 
+    [SerializeField] private Transform spriteMask;
+
     private void Awake()
     {
         playerStateManager = GetComponent<PlayerStateManager>();
@@ -61,6 +63,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         return playerCurrentHealth;
     }
-    
+
+    public void PlayerDeathSequence()
+    {
+        spriteMask.eulerAngles = Vector3.zero;
+        GameStateManager.instance.ChangeGameState(GameStateManager.GameState.CUTSCENE);
+        GetComponent<PlayerAnimator>().PlayDeathAnimation();
+    }
+
+    public void KillPlayer()
+    {
+        GameStateManager.instance.ChangeGameState(GameStateManager.GameState.GAME_OVER);
+        Destroy(this.gameObject);
+    }
     
 }

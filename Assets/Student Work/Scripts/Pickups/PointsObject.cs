@@ -23,7 +23,7 @@ public class PointsObject : MonoBehaviour, IPickup
         if (canPickup == false)
         {
             pickupLifeTime += Time.deltaTime;
-            if (pickupLifeTime >= pickupCooldown) ;
+            if (pickupLifeTime >= pickupCooldown) 
             {
                 canPickup = true;
             }

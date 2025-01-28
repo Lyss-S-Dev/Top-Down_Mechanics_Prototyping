@@ -406,6 +406,7 @@ GameObject:
   - component: {fileID: 6518421067220498102}
   - component: {fileID: 1718415225304499029}
   - component: {fileID: 1320245531737574570}
+  - component: {fileID: 731598284823875598}
   m_Layer: 5
   m_Name: Game Over UI
   m_TagString: Untagged
@@ -510,6 +511,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartButton: {fileID: 6166388430792292011}
   returnToMenuButton: {fileID: 7970864079787373493}
+--- !u!95 &731598284823875598
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307424291956831810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3479344663085752254
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4245283, g: 0.030037375, b: 0.030037375, a: 1}
+  m_Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -846,8 +869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -142.97742}
-  m_SizeDelta: {x: 497.2745, y: 153.9548}
+  m_AnchoredPosition: {x: 0, y: -268}
+  m_SizeDelta: {x: 504.01, y: 153.9548}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2618049367364483864
 CanvasRenderer:
@@ -886,8 +909,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -904,8 +927,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.1
-  m_fontSizeBase: 60.1
+  m_fontSize: 94.9
+  m_fontSizeBase: 94.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

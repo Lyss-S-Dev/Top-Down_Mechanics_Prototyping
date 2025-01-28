@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -6,10 +7,13 @@ public class PlayerAnimator : MonoBehaviour
     private Animator animator;
     private PlayerMover playerMover;
 
-    private bool attackAnimationPlaying = false;
+    private bool attackAnimationPlaying;
+
+    [SerializeField] private GameObject deathParticles;
 
     private const string ANIMATOR_IS_RUNNING_STRING = "IS_RUNNING";
     private const string ANIMATOR_IS_ATTACK_STRING = "IS_ATTACK";
+    private const string ANIMATOR_DEATH_STRING = "DEATH";
 
     private void Start()
     {
@@ -31,7 +35,7 @@ public class PlayerAnimator : MonoBehaviour
         attackAnimationPlaying = true;
     }
 
-    public void EndAttackAnimation()
+    protected void EndAttackAnimation()
     {
         attackAnimationPlaying = false;
     }
@@ -39,6 +43,20 @@ public class PlayerAnimator : MonoBehaviour
     public bool IsAttackAnimationPlaying()
     {
         return attackAnimationPlaying;
+    }
+
+    public void PlayDeathAnimation()
+    {
+        animator.SetTrigger(ANIMATOR_DEATH_STRING);
+    }
+
+    protected void SpawnDeathParticles()
+    {
+        Instantiate(deathParticles,transform.position,quaternion.identity);
+    }
+    protected void DeathAnimationEnded()
+    {
+        GetComponent<PlayerHealth>().KillPlayer();
     }
     
 }

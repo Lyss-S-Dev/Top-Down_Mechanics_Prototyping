@@ -32,7 +32,7 @@ public class PlayerStateManager : MonoBehaviour
                StartCoroutine(InvincibleTime());
                break;
            case PlayerState.DEAD:
-               GameStateManager.instance.ChangeGameState(GameStateManager.GameState.GAME_OVER);
+               GetComponent<PlayerHealth>().PlayerDeathSequence();
                break;
        }
    }
