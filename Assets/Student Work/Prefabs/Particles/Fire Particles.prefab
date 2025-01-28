@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9139810850159752106}
   - component: {fileID: 4548156719348615288}
   - component: {fileID: 2308137107975083248}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

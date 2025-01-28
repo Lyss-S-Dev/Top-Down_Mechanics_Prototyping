@@ -114,6 +114,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     protected void FacePlayer()
     {
         transform.up = playerPosition.position - transform.position;
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
     }
 
     private IEnumerator StunCooldown()

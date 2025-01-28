@@ -10,6 +10,10 @@ public class HealthBarUI : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField] private RectTransform[] healthPips;
     private Animator healthBarAnimator;
+
+    [SerializeField] private Sprite fullHeart;
+    [SerializeField] private Sprite brokenHeart;
+    
     private void Start()
     {
         healthBarAnimator = GetComponent<Animator>();
@@ -36,11 +40,11 @@ public class HealthBarUI : MonoBehaviour
         {
             if (i <= (currentPlayerHealth - 1))
             {
-                healthPips[i].GetComponent<Image>().enabled = true;
+                healthPips[i].GetComponent<Image>().sprite = fullHeart;
             }
             else
             {
-                healthPips[i].GetComponent<Image>().enabled = false;
+                healthPips[i].GetComponent<Image>().sprite = brokenHeart;
             }
         }
     }

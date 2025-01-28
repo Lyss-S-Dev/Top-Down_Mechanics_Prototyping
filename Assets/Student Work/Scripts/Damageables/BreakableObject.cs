@@ -23,7 +23,7 @@ public class BreakableObject : MonoBehaviour, IDamageable
               ObjectDestruction();
        }
 
-       private void ObjectDestruction()
+       protected virtual void ObjectDestruction()
        {
            ScoringManager.instance.UpdatePlayerScore(scoreValue);
            ScoringManager.instance.TickUpActionCounter();

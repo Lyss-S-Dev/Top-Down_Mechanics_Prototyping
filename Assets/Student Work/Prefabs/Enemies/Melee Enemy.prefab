@@ -231,7 +231,7 @@ MonoBehaviour:
     m_Bits: 64
   detectionIgnoreLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 2432
   statistics: {fileID: 11400000, guid: b7156aa9a9b540e41ad226e70e37cede, type: 2}
   damageParticles: {fileID: 7550673564881290082, guid: 3e65b0b1f16ce0f4b998d27b522fd32b, type: 3}
   attackPoint: {fileID: 9190935137978627606}

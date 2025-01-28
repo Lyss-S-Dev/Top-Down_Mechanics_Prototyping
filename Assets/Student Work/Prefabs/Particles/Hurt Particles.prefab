@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2018260403416627285}
   - component: {fileID: 3148447146835715916}
   - component: {fileID: -8149536067655873458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hurt Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
