@@ -25,9 +25,13 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = inputManager.GetMoveDirection();
-
-        isRunning = playerBody.linearVelocity.magnitude > 0f;
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        {
+            direction = inputManager.GetMoveDirection();
+            
+            isRunning = playerBody.linearVelocity.magnitude > 0f;
+        }
+        
     }
 
     private void FixedUpdate()
@@ -35,6 +39,10 @@ public class PlayerMover : MonoBehaviour
         if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             HandleMovement();
+        }
+        else
+        {
+            playerBody.linearVelocity = Vector2.zero;
         }
         
     }

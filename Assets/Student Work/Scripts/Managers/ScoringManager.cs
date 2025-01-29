@@ -13,6 +13,8 @@ public class ScoringManager : MonoBehaviour
     private int actionCounter;
     private bool isActionComboActive;
     private float actionComboTimeout;
+    private int highestComboCount;
+    
     private void Awake()
     {
         if (instance == null)
@@ -68,6 +70,12 @@ public class ScoringManager : MonoBehaviour
     {
         isActionComboActive = false;
         ComboHasEnded.Invoke(this.gameObject,EventArgs.Empty);
+
+        if (actionCounter > highestComboCount)
+        {
+            highestComboCount = actionCounter;
+        }
+        
         ResetActionCounter();
     }
     
@@ -99,5 +107,10 @@ public class ScoringManager : MonoBehaviour
     public float GetComboTimeout()
     {
         return actionComboTimeout;
+    }
+
+    public int GetHighestComboCount()
+    {
+        return highestComboCount;
     }
 }

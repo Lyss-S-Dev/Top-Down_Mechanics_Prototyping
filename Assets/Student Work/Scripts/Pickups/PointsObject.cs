@@ -7,7 +7,7 @@ public class PointsObject : MonoBehaviour, IPickup
     [SerializeField] private int pointsValue;
     private bool canPickup;
 
-    private float pickupCooldown = 0.5f;
+    private float pickupCooldown = 0.2f;
     private float pickupLifeTime;
 
     private Rigidbody2D objectBody;

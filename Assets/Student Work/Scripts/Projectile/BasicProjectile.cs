@@ -15,7 +15,11 @@ public class BasicProjectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TravelForwards();
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        {
+            TravelForwards();
+        }
+        
     }
 
     private void TravelForwards()

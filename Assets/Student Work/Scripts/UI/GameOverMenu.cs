@@ -10,6 +10,8 @@ public class GameOverMenu : CanvasBaseFunctions
 
     [SerializeField] private Button restartButton;
     [SerializeField] private Button returnToMenuButton;
+
+    private Animator animator;
     
     void Start()
     {
@@ -23,6 +25,8 @@ public class GameOverMenu : CanvasBaseFunctions
         {
             //Game State Manager is missing, error
         }
+
+        animator = GetComponent<Animator>();
         
         restartButton.onClick.AddListener(RestartButtonPressed);
         returnToMenuButton.onClick.AddListener(ReturnToMenuButtonPressed);
@@ -36,6 +40,8 @@ public class GameOverMenu : CanvasBaseFunctions
         if (gameStateManager.GetCurrentGameState() == GameStateManager.GameState.GAME_OVER)
         {
             Show();
+            animator.SetTrigger("Death");
+            
         }
         
     }
