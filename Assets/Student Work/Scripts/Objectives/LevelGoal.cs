@@ -13,7 +13,7 @@ public class LevelGoal : MonoBehaviour, IPickup
     private void OnTriggerEnter2D(Collider2D other)
     {
         //if player run the pickup code
-        if (other.gameObject.GetComponent<PlayerMover>()) ;
+        if (other.gameObject.GetComponent<PlayerMover>()) 
         {
             HandlePickup();
         }

@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
 
-    //public event EventHandler NewSceneIsLoading;
+    [SerializeField] private LoadingScreen loadingScreen;
     
     private void Awake()
     {
@@ -23,28 +23,28 @@ public class SceneLoader : MonoBehaviour
         
         DontDestroyOnLoad(this.gameObject);
         
-        
     }
 
     public void HandleLoadScene(string sceneNameToLoad)
     {
-        Debug.Log("WE ARE GOING TO LOAD A SCENE");
-        
+        loadingScreen.ShowLoadingScreen();
         StartCoroutine(LoadAsyncScene(sceneNameToLoad));
     }
-
-
+    
 
     private IEnumerator LoadAsyncScene(string sceneName)
     {
-        AsyncOperation loadingScene = SceneManager.LoadSceneAsync(sceneName);
-        
-        //you can put a loading screen here
+        yield return new WaitForSeconds(2.4f);
 
+        AsyncOperation loadingScene = SceneManager.LoadSceneAsync(sceneName);
+
+        
         while (!loadingScene.isDone)
         {
             yield return null;
         }
+        
+        loadingScreen.HideLoadingScreen();
     }
 
     public void RestartCurrentScene()
