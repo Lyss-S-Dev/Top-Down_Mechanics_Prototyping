@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         playerCurrentHealth -= modValue;
         VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
         ScoringManager.instance.EndActionCombo();
-        followTarget.Shake(0.2f);
+        followTarget.Shake(0.3f);
         PlayerTookDamage.Invoke(this,EventArgs.Empty);
 
         if (playerCurrentHealth > 0)
