@@ -6,16 +6,19 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
-    
-    private void Awake()
-    {
-        
-    }
+    [SerializeField] private Button controlsButton;
+    [SerializeField] private Button closeControlsButton;
 
+    private Animator menuAnimator;
+    
     private void Start()
     {
+        menuAnimator = GetComponent<Animator>();
+        
         startButton.onClick.AddListener(HandleStartButtonClicked);
         exitButton.onClick.AddListener(HandleExitButtonClicked);
+        controlsButton.onClick.AddListener(HandleControlsButtonClicked);
+        closeControlsButton.onClick.AddListener(handleCloseControlsButtonClicked);
     }
 
     private void HandleStartButtonClicked()
@@ -34,6 +37,11 @@ public class MainMenuManager : MonoBehaviour
 
     private void HandleControlsButtonClicked()
     {
-        
+        menuAnimator.SetTrigger("Show and Hide");
+    }
+
+    private void handleCloseControlsButtonClicked()
+    {
+        menuAnimator.SetTrigger("Show and Hide");
     }
 }
