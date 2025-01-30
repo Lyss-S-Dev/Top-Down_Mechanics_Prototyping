@@ -58,19 +58,23 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damageValue, Vector3 damageSource)
     {
         ChangeHealth(damageValue);
-        GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
-        spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
-        ScoringManager.instance.TickUpActionCounter();
+        EnemyDamageFeedback(damageSource);
         
         //if the enemy is not currently attacking, they become stunned momentarily
         if (currentState != EnemyState.ATTACK)
         {
-            
             ChangeCurrentState(EnemyState.STUN);
             enemyBody.linearVelocity = Vector2.zero;
             enemyBody.bodyType = RigidbodyType2D.Kinematic;
             StartCoroutine(StunCooldown());
         }
+    }
+
+    private void EnemyDamageFeedback(Vector3 damageSource)
+    {
+        GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
+        spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
+        ScoringManager.instance.TickUpActionCounter();
     }
 
     private void ChangeHealth(float modValue)

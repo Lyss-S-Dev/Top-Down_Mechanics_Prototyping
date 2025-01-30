@@ -4989,11 +4989,11 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.92485803, b: 0, a: 1}
-  m_Intensity: 0.33
+  m_Intensity: 0.96
   m_LightVolumeIntensity: 4.33
   m_LightVolumeEnabled: 1
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: 007ba09a47dbdd84c8680bafd2a0a71e, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: 794190341443d2643a2f28c6c6095fa5, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -5100,7 +5100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 007ba09a47dbdd84c8680bafd2a0a71e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 794190341443d2643a2f28c6c6095fa5, type: 3}
   m_Color: {r: 1, g: 0.94259137, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

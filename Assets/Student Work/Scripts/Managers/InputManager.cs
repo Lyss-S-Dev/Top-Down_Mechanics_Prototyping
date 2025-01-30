@@ -27,10 +27,7 @@ public class InputManager : MonoBehaviour
          Destroy(this.gameObject);   
         }
 
-        if (inputActions == null)
-        {
-            inputActions = new PlayerActions();
-        }
+        inputActions ??= new PlayerActions();
         
         mainCamera = Camera.main;
         inputActions.INGAME.Enable();

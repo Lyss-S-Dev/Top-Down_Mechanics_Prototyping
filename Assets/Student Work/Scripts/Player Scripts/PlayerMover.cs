@@ -7,9 +7,7 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D playerBody;
 
     private Vector2 direction;
-    
     [SerializeField] private float moveSpeed;
-
     private bool isRunning;
 
     [SerializeField] private Transform cameraFollowTarget;
@@ -18,7 +16,6 @@ public class PlayerMover : MonoBehaviour
     void Start()
     {
         inputManager = InputManager.Instance;
-
         playerBody = GetComponent<Rigidbody2D>();
     }
 

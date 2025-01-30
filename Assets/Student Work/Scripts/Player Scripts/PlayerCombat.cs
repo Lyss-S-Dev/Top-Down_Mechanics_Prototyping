@@ -38,7 +38,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void HandleAttack()
     {
-        
         //draw overlap shape at attack point
         Collider2D[] targets = Physics2D.OverlapBoxAll(attackPoint.position, attackBoxSize, transform.rotation.z, ~ignoreLayers);
         
@@ -51,10 +50,6 @@ public class PlayerCombat : MonoBehaviour
                 
             }
         }
-        
-        //for each overlap, check for damageable component
-        //call damage function for each one
-
     }
 
     void OnDrawGizmosSelected()

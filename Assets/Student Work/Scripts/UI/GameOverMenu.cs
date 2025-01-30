@@ -31,7 +31,6 @@ public class GameOverMenu : CanvasBaseFunctions
         restartButton.onClick.AddListener(RestartButtonPressed);
         returnToMenuButton.onClick.AddListener(ReturnToMenuButtonPressed);
         
-        
         Hide();
     }
 
@@ -41,9 +40,7 @@ public class GameOverMenu : CanvasBaseFunctions
         {
             Show();
             animator.SetTrigger("Death");
-            
         }
-        
     }
 
     private void RestartButtonPressed()
@@ -54,7 +51,6 @@ public class GameOverMenu : CanvasBaseFunctions
     private void ReturnToMenuButtonPressed()
     {
         SceneLoader.instance.HandleLoadScene("Main Menu");
-        
     }
 
 }

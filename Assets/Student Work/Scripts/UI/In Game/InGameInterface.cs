@@ -1,11 +1,6 @@
 using System;
-using UnityEngine;
-using UnityEngine.InputSystem.HID;
-
 public class InGameInterface : CanvasBaseFunctions
 {
-   
-
     private GameStateManager gameStateManager;
     
     void Start()

@@ -19,7 +19,6 @@ public class BasicProjectile : MonoBehaviour
         {
             TravelForwards();
         }
-        
     }
 
     private void TravelForwards()

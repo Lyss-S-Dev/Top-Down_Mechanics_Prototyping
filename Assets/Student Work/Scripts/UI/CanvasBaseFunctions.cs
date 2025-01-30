@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-
 public class CanvasBaseFunctions : MonoBehaviour
 {
 
@@ -17,7 +15,6 @@ public class CanvasBaseFunctions : MonoBehaviour
         {
             ownCanvas.enabled = true;
         }
-        
     }
 
     protected void Hide()
@@ -26,7 +23,5 @@ public class CanvasBaseFunctions : MonoBehaviour
         {
             ownCanvas.enabled = false;
         }
-        
     }
-    
 }

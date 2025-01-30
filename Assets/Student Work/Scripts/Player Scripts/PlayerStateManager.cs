@@ -11,9 +11,9 @@ public class PlayerStateManager : MonoBehaviour
         DEAD,
     }
 
-    [SerializeField] private float invincibleTime = 0.5f;
+   [SerializeField] private float invincibleTime = 0.5f;
 
-    private PlayerState currentPlayerState;
+   private PlayerState currentPlayerState;
 
    private void Start()
    {
