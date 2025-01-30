@@ -43,6 +43,8 @@ public class SceneLoader : MonoBehaviour
         {
             yield return null;
         }
+
+        yield return new WaitForSeconds(0.2f);
         
         loadingScreen.HideLoadingScreen();
     }

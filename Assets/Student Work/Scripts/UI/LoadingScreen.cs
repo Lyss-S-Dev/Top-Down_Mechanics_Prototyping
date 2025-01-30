@@ -20,6 +20,11 @@ public class LoadingScreen : CanvasBaseFunctions
 
     public void HideLoadingScreen()
     {
+        loadingAnimator.SetTrigger("Hide Loading");
+    }
+
+    protected void HideAnimationEnded()
+    {
         Hide();
     }
 }
