@@ -60,6 +60,7 @@ public class PlayerMover : MonoBehaviour
         }
         else
         {
+            isRunning = false;
             playerBody.linearVelocity = Vector2.zero;
         }
         

@@ -42,23 +42,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void ReduceHealth(float modValue)
     {
-        playerCurrentHealth -= modValue;
-        DamageFeedback();
+        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        {
+            playerCurrentHealth -= modValue;
+                    DamageFeedback();
+                    
+                    if (playerCurrentHealth > 0)
+                    {
+                        playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.INVINCIBLE);
+                    }
+                    else
+                    {
+                        playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.DEAD);
+                    }
+        }
         
-        if (playerCurrentHealth > 0)
-        {
-            playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.INVINCIBLE);
-        }
-        else
-        {
-            playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.DEAD);
-        }
         
     }
 
     private void DamageFeedback()
     {
         VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
+        AudioPlayer.instance.PlayClipAtPosition("Player Hurt", transform.position,false);
         ScoringManager.instance.EndActionCombo();
         followTarget.Shake(0.3f);
         PlayerTookDamage.Invoke(this,EventArgs.Empty);
