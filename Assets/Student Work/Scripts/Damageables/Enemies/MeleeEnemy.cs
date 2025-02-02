@@ -75,14 +75,17 @@ public class MeleeEnemy : BaseEnemy
     
     
     
-    public void EndAttack()
+    protected void EndAttack()
     {
         //this method is called at the end of the melee enemy attack via an animation event
         enemyBody.bodyType = RigidbodyType2D.Dynamic;
         ChangeCurrentState(EnemyState.ACTIVE);
     }
-   
-    
+
+    protected void PlayAttackAudio()
+    {
+        AudioPlayer.instance.PlayClipAtPosition("Sword Attack", transform.position, false);
+    }
     
 
     protected override void OnDrawGizmosSelected()

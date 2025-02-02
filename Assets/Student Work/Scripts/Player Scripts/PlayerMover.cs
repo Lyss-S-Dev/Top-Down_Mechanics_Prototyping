@@ -10,6 +10,12 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private bool isRunning;
 
+    private AudioSource footstepAudio;
+    [SerializeField] private float footstepClipPlayFrequency;
+    private float footstepClipCooldown;
+        
+    
+
     [SerializeField] private Transform cameraFollowTarget;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +23,7 @@ public class PlayerMover : MonoBehaviour
     {
         inputManager = InputManager.Instance;
         playerBody = GetComponent<Rigidbody2D>();
+        footstepAudio = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +34,20 @@ public class PlayerMover : MonoBehaviour
             direction = inputManager.GetMoveDirection();
             
             isRunning = playerBody.linearVelocity.magnitude > 0f;
+        }
+
+        if (isRunning)
+        {
+            if (footstepClipCooldown < footstepClipPlayFrequency)
+            {
+                footstepClipCooldown += Time.deltaTime;
+            }
+            else
+            {
+                footstepAudio.pitch = Random.Range(0.6f, 0.7f);
+                footstepAudio.Play();
+                footstepClipCooldown = 0f;
+            }
         }
         
     }

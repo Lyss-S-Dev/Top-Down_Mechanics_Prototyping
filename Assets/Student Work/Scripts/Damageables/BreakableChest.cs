@@ -10,6 +10,7 @@ public class BreakableChest : BreakableObject
     protected override void ObjectDestruction()
     {
         SpawnPickups();
+        AudioPlayer.instance.PlayClipAtPosition("Chest Broken", transform.position, true);
         ScoringManager.instance.TickUpActionCounter();
         Destroy(this.gameObject);
     }

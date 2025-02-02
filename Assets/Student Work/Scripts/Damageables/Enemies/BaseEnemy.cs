@@ -74,6 +74,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
         spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
+        AudioPlayer.instance.PlayClipAtPosition("Took Damage", transform.position, true);
         ScoringManager.instance.TickUpActionCounter();
     }
 
