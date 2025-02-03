@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06172ac4285f0454eadf710fe8f08782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 400
+  moveSpeed: 420
   footstepClipPlayFrequency: 0.3
   cameraFollowTarget: {fileID: 7759550320360554928}
 --- !u!114 &5161747543792886137

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1615700277282063521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514695677054171369}
+  - component: {fileID: 3481876658879600184}
+  m_Layer: 0
+  m_Name: Audio Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &514695677054171369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615700277282063521}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.652056, y: 7.0833025, z: 10.862694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3481876658879600184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615700277282063521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf8f905a782bec4e994b19509b2e524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources:
+  - soundClip: {fileID: 3912904482049760756, guid: d4d3ae38aa624b34188730e27530d9d8, type: 3}
+    name: Took Damage
+    volume: 0.2
+  - soundClip: {fileID: 467923302474247919, guid: 773a4174953f45243906cf3342aa8406, type: 3}
+    name: Object Broken
+    volume: 0.2
+  - soundClip: {fileID: 5947355481921378970, guid: 016edca5aa5378a41aa6adcba9b6c64d, type: 3}
+    name: Chest Broken
+    volume: 0.2
+  - soundClip: {fileID: 5307559685635369341, guid: fc47cba0f8859914ca8704c4f56553fc, type: 3}
+    name: Sword Attack
+    volume: 0.2
+  - soundClip: {fileID: 4706965323741480366, guid: 542bdcd7fe9aad2479136feb90aae0b2, type: 3}
+    name: Player Hurt
+    volume: 0.2
