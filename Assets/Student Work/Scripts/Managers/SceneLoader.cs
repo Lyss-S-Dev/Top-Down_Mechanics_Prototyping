@@ -31,13 +31,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadAsyncScene(sceneNameToLoad));
     }
     
-
     private IEnumerator LoadAsyncScene(string sceneName)
     {
         yield return new WaitForSecondsRealtime(2f);
 
         AsyncOperation loadingScene = SceneManager.LoadSceneAsync(sceneName);
-
         
         while (!loadingScene.isDone)
         {

@@ -6,42 +6,45 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button levelSelectCloseButton;
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button closeControlsButton;
 
-    private Animator menuAnimator;
+    [SerializeField] private GameObject controlsPanel;
+    [SerializeField] private GameObject levelSelectPanel;
     
     private void Start()
     {
-        menuAnimator = GetComponent<Animator>();
-        
         startButton.onClick.AddListener(HandleStartButtonClicked);
-        exitButton.onClick.AddListener(HandleExitButtonClicked);
+        levelSelectCloseButton.onClick.AddListener(HandleLevelSelectCloseButtonClicked);
         controlsButton.onClick.AddListener(HandleControlsButtonClicked);
-        closeControlsButton.onClick.AddListener(handleCloseControlsButtonClicked);
+        closeControlsButton.onClick.AddListener(HandleCloseControlsButtonClicked);
+        exitButton.onClick.AddListener(HandleExitButtonClicked);
+        
+        controlsPanel.SetActive(false);
+        levelSelectPanel.SetActive(false);
     }
 
     private void HandleStartButtonClicked()
     {
-        //call reference to scene loader
-        //load first scene
-        Debug.Log("START BUTTON PRESSED");
-        SceneLoader.instance.HandleLoadScene("Level 1");
+        levelSelectPanel.SetActive(true);
     }
-
+    private void HandleLevelSelectCloseButtonClicked()
+    {
+        levelSelectPanel.SetActive(false);
+    }
     private void HandleExitButtonClicked()
     {
         Debug.Log("QUITTING APPLICATION");
         Application.Quit();
     }
-
     private void HandleControlsButtonClicked()
     {
-        menuAnimator.SetTrigger("Show and Hide");
+        controlsPanel.SetActive(true);
     }
 
-    private void handleCloseControlsButtonClicked()
+    private void HandleCloseControlsButtonClicked()
     {
-        menuAnimator.SetTrigger("Show and Hide");
+        controlsPanel.SetActive(false);
     }
 }
