@@ -76,7 +76,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.41}
+  m_Size: {x: 1, y: 0.7}
   m_EdgeRadius: 0
 --- !u!1 &9122085853036497204
 GameObject:
@@ -325,12 +325,12 @@ MonoBehaviour:
     m_TrimEdge: 0.009
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.009
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.009
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 0}
+  m_PreviousShadowShape2DSource: {fileID: 3741146110959691239}
   references:
     version: 2
     RefIds:
