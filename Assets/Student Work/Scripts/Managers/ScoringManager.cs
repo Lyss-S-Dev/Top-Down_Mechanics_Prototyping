@@ -141,4 +141,9 @@ public class ScoringManager : MonoBehaviour
     {
         return highestComboCount;
     }
+
+    public float GetCurrentScoreMult()
+    {
+        return GetComboMultiplier();
+    }
 }
