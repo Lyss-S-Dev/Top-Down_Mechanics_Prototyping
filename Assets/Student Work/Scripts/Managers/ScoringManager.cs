@@ -50,7 +50,8 @@ public class ScoringManager : MonoBehaviour
 
     public void UpdatePlayerScore(int pointsValue)
     {
-        playerScore += pointsValue;
+        int actualValue = (int)MathF.Round(pointsValue * GetComboMultiplier());
+        playerScore += actualValue;
         ScoreHasUpdated.Invoke(this,EventArgs.Empty);
     }
 
@@ -77,6 +78,33 @@ public class ScoringManager : MonoBehaviour
         }
         
         ResetActionCounter();
+    }
+
+    private float GetComboMultiplier()
+    {
+        if (actionCounter >= 15 && actionCounter < 30)
+        {
+            return 1.5f;
+        }
+        
+        if (actionCounter >= 30 && actionCounter < 45)
+        {
+            return 2f;
+        }
+        
+        if(actionCounter >= 45 && actionCounter<60)
+        {
+            return 2.5f;
+        }
+        
+        if (actionCounter >= 60)
+        {
+            return 3f;
+        }
+        
+        
+        return 1f;
+        
     }
     
     private void ResetActionCounter()
