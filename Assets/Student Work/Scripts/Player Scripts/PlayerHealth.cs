@@ -45,10 +45,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             playerCurrentHealth -= modValue;
-                    DamageFeedback();
+            
                     
                     if (playerCurrentHealth > 0)
                     {
+                        DamageFeedback();
                         playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.INVINCIBLE);
                     }
                     else
@@ -63,7 +64,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void DamageFeedback()
     {
         VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
-        AudioPlayer.instance.PlayClipAtPosition("Player Hurt", transform.position,false);
+        AudioPlayer.instance.PlayClipAtPosition("Player Hurt");
         ScoringManager.instance.EndActionCombo();
         followTarget.Shake(0.3f);
         PlayerTookDamage.Invoke(this,EventArgs.Empty);
@@ -76,6 +77,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void PlayerDeathSequence()
     {
+        AudioPlayer.instance.PlayClipAtPosition("Player Death");
         spriteMask.eulerAngles = Vector3.zero;
         GameStateManager.instance.ChangeGameState(GameStateManager.GameState.CUTSCENE);
         GetComponent<PlayerAnimator>().PlayDeathAnimation();

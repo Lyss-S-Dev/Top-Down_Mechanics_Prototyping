@@ -84,7 +84,7 @@ public class MeleeEnemy : BaseEnemy
 
     protected void PlayAttackAudio()
     {
-        AudioPlayer.instance.PlayClipAtPosition("Sword Attack", transform.position, false);
+        AudioPlayer.instance.PlayClipAtPosition("Sword Attack");
     }
     
 

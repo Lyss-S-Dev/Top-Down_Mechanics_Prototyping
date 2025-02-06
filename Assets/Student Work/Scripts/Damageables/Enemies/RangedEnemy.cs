@@ -77,6 +77,7 @@ public class RangedEnemy : BaseEnemy
     }
     protected void ShootProjectile()
     {
+        AudioPlayer.instance.PlayClipAtPosition("Shoot");
         GameObject spawnedProjectile = Instantiate(projectile, projectileSpawnPoint.position,this.transform.rotation);
         spawnedProjectile.GetComponent<BasicProjectile>().SetUpProjectile(statistics.attackDamage, projectileSpeed);
     }

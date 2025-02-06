@@ -53,11 +53,13 @@ public class VictoryUI : CanvasBaseFunctions
 
     private void ReturnToMenuButtonPressed()
     {
+        ButtonSound();
         SceneLoader.instance.HandleLoadScene("Main Menu");
     }
 
     private void TryAgainButtonPressed()
     {
+        ButtonSound();
         SceneLoader.instance.RestartCurrentScene();
     }
 }

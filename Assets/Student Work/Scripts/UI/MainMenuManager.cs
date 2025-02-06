@@ -28,23 +28,33 @@ public class MainMenuManager : MonoBehaviour
     private void HandleStartButtonClicked()
     {
         levelSelectPanel.SetActive(true);
+        ButtonAudio();
     }
     private void HandleLevelSelectCloseButtonClicked()
     {
         levelSelectPanel.SetActive(false);
+        ButtonAudio();
     }
     private void HandleExitButtonClicked()
     {
-        Debug.Log("QUITTING APPLICATION");
+        
+        ButtonAudio();
         Application.Quit();
     }
     private void HandleControlsButtonClicked()
     {
         controlsPanel.SetActive(true);
+        ButtonAudio();
     }
 
     private void HandleCloseControlsButtonClicked()
     {
         controlsPanel.SetActive(false);
+        ButtonAudio();
+    }
+
+    private void ButtonAudio()
+    {
+        AudioPlayer.instance.PlayClipAtPosition("UI Button");
     }
 }

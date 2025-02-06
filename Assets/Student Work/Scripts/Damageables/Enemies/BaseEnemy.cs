@@ -74,7 +74,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
         spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
-        AudioPlayer.instance.PlayClipAtPosition("Took Damage", transform.position, true);
+        AudioPlayer.instance.PlayClipAtPosition("Took Damage");
         ScoringManager.instance.TickUpActionCounter();
     }
 
@@ -111,6 +111,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             if (hit.transform.GetComponent<PlayerHealth>())
             {
                 VFXManager.Instance.SpawnAlertParticle(this.transform.position);
+                AudioPlayer.instance.PlayClipAtPosition("Alert");
                 ChangeCurrentState(EnemyState.ACTIVE);
             }
         }

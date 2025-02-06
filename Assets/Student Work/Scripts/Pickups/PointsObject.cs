@@ -33,6 +33,7 @@ public class PointsObject : MonoBehaviour, IPickup
     public void HandlePickup()
     {
         ScoringManager.instance.UpdatePlayerScore(pointsValue);
+        AudioPlayer.instance.PlayClipAtPosition("Coin");
         ScoringManager.instance.TickUpActionCounter();
         Destroy(this.gameObject);
     }

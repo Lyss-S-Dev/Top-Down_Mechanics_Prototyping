@@ -63,6 +63,7 @@ public class FlipSwitch : MonoBehaviour, IDamageable
     private void ToggleSwitch()
     {
         toggleState = !toggleState;
+        AudioPlayer.instance.PlayClipAtPosition("Switch");
 
         if (toggleState)
         {

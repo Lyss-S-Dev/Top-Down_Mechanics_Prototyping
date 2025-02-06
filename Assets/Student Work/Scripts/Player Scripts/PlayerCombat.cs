@@ -29,7 +29,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (!playerAnimator.IsAttackAnimationPlaying())
             {
-                AudioPlayer.instance.PlayClipAtPosition("Sword Attack", transform.position,false);
+                AudioPlayer.instance.PlayClipAtPosition("Sword Attack");
                 playerAnimator.PerformAttackAnimation();
             }
         }

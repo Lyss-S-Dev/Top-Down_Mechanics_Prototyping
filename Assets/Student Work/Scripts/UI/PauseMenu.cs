@@ -44,16 +44,19 @@ public class PauseMenu : CanvasBaseFunctions
 
     private void ContinueGame()
     {
+        ButtonSound();
         gameStateManager.ChangeGameState(GameStateManager.GameState.IN_GAME);
     }
 
     private void RestartButtonPressed()
     {
+        ButtonSound();
         SceneLoader.instance.RestartCurrentScene();
     }
 
     private void ReturnToMenuButtonPressed()
     {
+        ButtonSound();
         gameStateManager.ChangeGameState(GameStateManager.GameState.CUTSCENE);
         SceneLoader.instance.HandleLoadScene("Main Menu");
     }

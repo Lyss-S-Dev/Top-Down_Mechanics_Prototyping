@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class SoundEffect
 {
-    public GameObject soundClip;
+    public AudioSource soundClip;
     public string name;
     public float volume;
 }
@@ -31,26 +31,17 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
-    public void PlayClipAtPosition(string clipName, Vector3 position, bool enablePitchVariance)
+    public void PlayClipAtPosition(string clipName)
     {
-        foreach (SoundEffect clipPrefab in audioSources)
+        foreach (SoundEffect audioClip in audioSources)
         {
-            if (clipPrefab.name == clipName)
+            if (clipName == audioClip.name)
             {
-                SpawnClipPrefab(clipPrefab.soundClip, position, clipPrefab.volume,enablePitchVariance);
+                audioClip.soundClip.PlayOneShot(audioClip.soundClip.clip, audioClip.volume);
             }
         }
     }
 
-    private void SpawnClipPrefab(GameObject clipToSpawn, Vector3 position, float volume, bool enablePitchVariance)
-    {
-       GameObject spawnedClip = Instantiate(clipToSpawn, position, quaternion.identity);
-       spawnedClip.GetComponent<AudioSource>().volume = volume;
-       if (enablePitchVariance)
-       {
-           spawnedClip.GetComponent<AudioSource>().pitch = Random.Range(0.5f, 1f);
-       }
-       
-    }
+    
     
 }

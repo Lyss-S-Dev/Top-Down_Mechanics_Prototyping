@@ -24,4 +24,9 @@ public class CanvasBaseFunctions : MonoBehaviour
             ownCanvas.enabled = false;
         }
     }
+
+    protected void ButtonSound()
+    {
+        AudioPlayer.instance.PlayClipAtPosition("UI Button");
+    }
 }

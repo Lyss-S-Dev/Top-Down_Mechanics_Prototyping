@@ -20,7 +20,7 @@ public class BreakableObject : MonoBehaviour, IDamageable
                    createdParticles.transform.up = createdParticles.transform.position - damageSource;
               }
               
-              AudioPlayer.instance.PlayClipAtPosition("Object Broken" , transform.position, true);
+              AudioPlayer.instance.PlayClipAtPosition("Object Broken");
               
               ObjectDestruction();
        }

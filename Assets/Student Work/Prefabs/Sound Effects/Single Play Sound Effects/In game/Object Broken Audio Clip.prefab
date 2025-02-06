@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5947355481921378970
+--- !u!1 &467923302474247919
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8104233336421430973}
-  - component: {fileID: 1320852773225051587}
-  - component: {fileID: 7802813303965096113}
+  - component: {fileID: 223818175175927649}
+  - component: {fileID: 253351545147273949}
   m_Layer: 0
-  m_Name: Chest Broken Audio Clip
+  m_Name: Object Broken Audio Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8104233336421430973
+--- !u!4 &223818175175927649
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947355481921378970}
+  m_GameObject: {fileID: 467923302474247919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.273572, y: 2.4298186, z: 10.909483}
@@ -33,19 +32,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1320852773225051587
+--- !u!82 &253351545147273949
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947355481921378970}
+  m_GameObject: {fileID: 467923302474247919}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 95a2c6c0ecd34d246adae7e719874140, type: 3}
-  m_Resource: {fileID: 8300000, guid: 95a2c6c0ecd34d246adae7e719874140, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 48b9c63e93af5fd4bba832ef01f7b232, type: 3}
+  m_Resource: {fileID: 8300000, guid: 48b9c63e93af5fd4bba832ef01f7b232, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -130,16 +129,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7802813303965096113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947355481921378970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042934d0c75024a41bea22fd8af77b4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectLifetime: 0.7

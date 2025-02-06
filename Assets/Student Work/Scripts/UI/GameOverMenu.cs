@@ -45,12 +45,16 @@ public class GameOverMenu : CanvasBaseFunctions
 
     private void RestartButtonPressed()
     {
+        ButtonSound();
         SceneLoader.instance.RestartCurrentScene();
     }
 
     private void ReturnToMenuButtonPressed()
     {
+        ButtonSound();
         SceneLoader.instance.HandleLoadScene("Main Menu");
     }
+    
+    
 
 }

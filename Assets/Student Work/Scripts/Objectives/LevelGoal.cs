@@ -21,11 +21,11 @@ public class LevelGoal : MonoBehaviour, IPickup
 
     public void HandlePickup()
     {
-        //swap game state to cutscene
+        
         GameStateManager.instance.ChangeGameState(GameStateManager.GameState.CUTSCENE);
-        //do a win animation
+        AudioPlayer.instance.PlayClipAtPosition("Victory");
         animator.SetTrigger("Level Win");
-        //on animation end, display win screen
+        
     }
 
     protected void WinAnimationDone()
