@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-
-
 public class LightFlicker : MonoBehaviour
 {
     private Light2D objectLight;

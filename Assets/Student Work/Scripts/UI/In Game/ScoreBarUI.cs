@@ -9,7 +9,7 @@ public class ScoreBarUI : MonoBehaviour
     void Start()
     {
         scoreBoxAnimator = GetComponent<Animator>();
-        ScoringManager.instance.ScoreHasUpdated += InstanceOnScoreHasUpdated;
+        ScoringManager.Instance.ScoreHasUpdated += InstanceOnScoreHasUpdated;
         scoreTextBox.text = "000000";
     }
 
@@ -21,6 +21,6 @@ public class ScoreBarUI : MonoBehaviour
     private void UpdateScoreText()
     {
         scoreBoxAnimator.SetTrigger("Scored");
-        scoreTextBox.text = string.Format("{0:000000}", ScoringManager.instance.GetPlayerScore());
+        scoreTextBox.text = string.Format("{0:000000}", ScoringManager.Instance.GetPlayerScore());
     }
 }

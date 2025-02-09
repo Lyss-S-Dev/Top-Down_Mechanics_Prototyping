@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoringManager : MonoBehaviour
 {
-    public static ScoringManager instance;
+    public static ScoringManager Instance;
     public event EventHandler ScoreHasUpdated; 
     public event EventHandler ComboHasUpdated;
     public event EventHandler ComboHasEnded;
@@ -17,9 +17,9 @@ public class ScoringManager : MonoBehaviour
     
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -33,7 +33,7 @@ public class ScoringManager : MonoBehaviour
 
     private void Update()
     {
-        if (isActionComboActive && GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (isActionComboActive && GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             actionComboTimeout -= Time.deltaTime;
             if (actionComboTimeout <= 0)

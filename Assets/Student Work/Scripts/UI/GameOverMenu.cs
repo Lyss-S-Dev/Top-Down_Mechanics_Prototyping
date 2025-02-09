@@ -15,17 +15,13 @@ public class GameOverMenu : CanvasBaseFunctions
     
     void Start()
     {
-        gameStateManager = GameStateManager.instance;
+        gameStateManager = GameStateManager.Instance;
 
         if (gameStateManager != null)
         {
             gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
         }
-        else
-        {
-            //Game State Manager is missing, error
-        }
-
+        
         animator = GetComponent<Animator>();
         
         restartButton.onClick.AddListener(RestartButtonPressed);
@@ -46,15 +42,12 @@ public class GameOverMenu : CanvasBaseFunctions
     private void RestartButtonPressed()
     {
         ButtonSound();
-        SceneLoader.instance.RestartCurrentScene();
+        SceneLoader.Instance.RestartCurrentScene();
     }
 
     private void ReturnToMenuButtonPressed()
     {
         ButtonSound();
-        SceneLoader.instance.HandleLoadScene("Main Menu");
+        SceneLoader.Instance.HandleLoadScene("Main Menu");
     }
-    
-    
-
 }

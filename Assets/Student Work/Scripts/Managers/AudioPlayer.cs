@@ -1,7 +1,5 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [Serializable]
 public class SoundEffect
@@ -16,13 +14,13 @@ public class AudioPlayer : MonoBehaviour
 {
     [SerializeField] private SoundEffect[] audioSources;
 
-    public static AudioPlayer instance;
+    public static AudioPlayer Instance;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else

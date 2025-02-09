@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,17 +5,16 @@ using Random = UnityEngine.Random;
 public class FollowTargetBehaviour : MonoBehaviour
 {
     private Vector2 originalLocalPosition;
-
+    
     private void Start()
     {
         originalLocalPosition = transform.localPosition;
     }
-
+    
     public void Shake(float intensity)
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
-            
             StartCoroutine(ShakeTime(originalLocalPosition, intensity));
         }
     }

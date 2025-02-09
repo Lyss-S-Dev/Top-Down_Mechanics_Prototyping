@@ -1,19 +1,18 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public static SceneLoader instance;
+    public static SceneLoader Instance;
 
     [SerializeField] private LoadingScreen loadingScreen;
     
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else
@@ -33,6 +32,7 @@ public class SceneLoader : MonoBehaviour
     
     private IEnumerator LoadAsyncScene(string sceneName)
     {
+        //Arbitrary time so the loading screen is visible for more than a few frames
         yield return new WaitForSecondsRealtime(2f);
 
         AsyncOperation loadingScene = SceneManager.LoadSceneAsync(sceneName);

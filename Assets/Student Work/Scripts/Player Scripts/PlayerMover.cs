@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
@@ -29,7 +28,7 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             direction = inputManager.GetMoveDirection();
             
@@ -49,12 +48,11 @@ public class PlayerMover : MonoBehaviour
                 footstepClipCooldown = 0f;
             }
         }
-        
     }
 
     private void FixedUpdate()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             HandleMovement();
         }
@@ -63,7 +61,6 @@ public class PlayerMover : MonoBehaviour
             isRunning = false;
             playerBody.linearVelocity = Vector2.zero;
         }
-        
     }
 
     private void HandleMovement()

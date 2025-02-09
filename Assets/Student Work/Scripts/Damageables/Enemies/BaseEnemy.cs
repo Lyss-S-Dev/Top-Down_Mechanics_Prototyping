@@ -74,8 +74,8 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
         spawnedParticles.transform.up = spawnedParticles.transform.position - damageSource;
-        AudioPlayer.instance.PlayClipAtPosition("Took Damage");
-        ScoringManager.instance.TickUpActionCounter();
+        AudioPlayer.Instance.PlayClipAtPosition("Took Damage");
+        ScoringManager.Instance.TickUpActionCounter();
     }
 
     private void ChangeHealth(float modValue)
@@ -84,7 +84,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         
         if (currentHealth <= 0)
         {
-            ScoringManager.instance.UpdatePlayerScore(statistics.pointsValue);
+            ScoringManager.Instance.UpdatePlayerScore(statistics.pointsValue);
             EnemyDeath();
         }
         else
@@ -111,7 +111,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
             if (hit.transform.GetComponent<PlayerHealth>())
             {
                 VFXManager.Instance.SpawnAlertParticle(this.transform.position);
-                AudioPlayer.instance.PlayClipAtPosition("Alert");
+                AudioPlayer.Instance.PlayClipAtPosition("Alert");
                 ChangeCurrentState(EnemyState.ACTIVE);
             }
         }

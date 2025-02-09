@@ -1,4 +1,3 @@
-using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -20,15 +19,15 @@ public class BreakableObject : MonoBehaviour, IDamageable
                    createdParticles.transform.up = createdParticles.transform.position - damageSource;
               }
               
-              AudioPlayer.instance.PlayClipAtPosition("Object Broken");
+              AudioPlayer.Instance.PlayClipAtPosition("Object Broken");
               
               ObjectDestruction();
        }
 
        protected virtual void ObjectDestruction()
        {
-           ScoringManager.instance.UpdatePlayerScore(scoreValue);
-           ScoringManager.instance.TickUpActionCounter();
+           ScoringManager.Instance.UpdatePlayerScore(scoreValue);
+           ScoringManager.Instance.TickUpActionCounter();
            Destroy(this.gameObject);
        }
        

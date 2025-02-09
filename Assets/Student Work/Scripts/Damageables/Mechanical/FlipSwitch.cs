@@ -1,10 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-
 public class FlipSwitch : MonoBehaviour, IDamageable
 {
-    
-    
     private SpriteRenderer switchSprite;
     private Light2D switchLights;
 
@@ -15,7 +12,7 @@ public class FlipSwitch : MonoBehaviour, IDamageable
 
     [SerializeField] private Color toggleFalseColour;
     [SerializeField] private Color toggleTrueColour;   
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         switchSprite = GetComponentInChildren<SpriteRenderer>();
@@ -30,6 +27,7 @@ public class FlipSwitch : MonoBehaviour, IDamageable
 
     private void SetUpFalseObjects()
     {
+        //Gives each sprite in the False Object array the same colour as the switches false state
         foreach (FlipObject falseObj in toggleFalseObjects)
         {
             falseObj.gameObject.GetComponentInChildren<SpriteRenderer>().color = toggleFalseColour;
@@ -40,6 +38,7 @@ public class FlipSwitch : MonoBehaviour, IDamageable
 
     private void SetUpTrueObjects()
     {
+        //Gives each sprite in the True Object array the same colour as the switches true state
         foreach (FlipObject trueObj in toggleTrueObjects)
         {
             trueObj.gameObject.GetComponentInChildren<SpriteRenderer>().color = toggleTrueColour;
@@ -57,13 +56,11 @@ public class FlipSwitch : MonoBehaviour, IDamageable
     {
         ToggleSwitch();
     }
-
-    
     
     private void ToggleSwitch()
     {
         toggleState = !toggleState;
-        AudioPlayer.instance.PlayClipAtPosition("Switch");
+        AudioPlayer.Instance.PlayClipAtPosition("Switch");
 
         if (toggleState)
         {

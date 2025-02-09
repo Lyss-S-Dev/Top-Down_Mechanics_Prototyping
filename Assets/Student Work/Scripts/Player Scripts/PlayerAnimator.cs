@@ -1,4 +1,3 @@
-using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -20,13 +19,10 @@ public class PlayerAnimator : MonoBehaviour
         animator = GetComponent<Animator>(); 
         playerMover = GetComponent<PlayerMover>();
     }
-
-
-    // Update is called once per frame
+    
     void Update()
     {
         animator.SetBool(ANIMATOR_IS_RUNNING_STRING, playerMover.GetIsRunning());
-        
     }
 
     public void PerformAttackAnimation()
@@ -58,5 +54,4 @@ public class PlayerAnimator : MonoBehaviour
     {
         GetComponent<PlayerHealth>().KillPlayer();
     }
-    
 }

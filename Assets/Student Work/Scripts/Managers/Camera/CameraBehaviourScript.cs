@@ -7,13 +7,11 @@ public class CameraBehaviourScript : MonoBehaviour
 
     private bool followTarget = true;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         target = FindFirstObjectByType<PlayerMover>().GetFollowTarget();
     }
-
-    // Update is called once per frame
+    
     void LateUpdate()
     {
         if (followTarget && target)

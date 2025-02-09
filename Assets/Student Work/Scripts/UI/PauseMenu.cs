@@ -12,15 +12,11 @@ public class PauseMenu : CanvasBaseFunctions
     
     private void Start()
     {
-        gameStateManager = GameStateManager.instance;
+        gameStateManager = GameStateManager.Instance;
 
         if (gameStateManager != null)
         {
             gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
-        }
-        else
-        {
-            //Game state manager missing, error
         }
         
         continueGameButton.onClick.AddListener(ContinueGame);
@@ -51,14 +47,14 @@ public class PauseMenu : CanvasBaseFunctions
     private void RestartButtonPressed()
     {
         ButtonSound();
-        SceneLoader.instance.RestartCurrentScene();
+        SceneLoader.Instance.RestartCurrentScene();
     }
 
     private void ReturnToMenuButtonPressed()
     {
         ButtonSound();
         gameStateManager.ChangeGameState(GameStateManager.GameState.CUTSCENE);
-        SceneLoader.instance.HandleLoadScene("Main Menu");
+        SceneLoader.Instance.HandleLoadScene("Main Menu");
     }
     
 }

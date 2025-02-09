@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BasicProjectile : MonoBehaviour
@@ -15,7 +14,7 @@ public class BasicProjectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             TravelForwards();
         }

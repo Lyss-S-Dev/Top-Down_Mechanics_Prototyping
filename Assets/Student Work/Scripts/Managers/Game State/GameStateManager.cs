@@ -1,12 +1,8 @@
-
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-
-
 public class GameStateManager : MonoBehaviour
 {
-    public static GameStateManager instance;
+    public static GameStateManager Instance;
     public event EventHandler StateHasChanged;
 
     private InputManager inputManager;
@@ -24,9 +20,9 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -50,7 +46,7 @@ public class GameStateManager : MonoBehaviour
         }
         else
         {
-                ChangeGameState(GameState.IN_GAME);
+            ChangeGameState(GameState.IN_GAME);
         }
         
     }
@@ -70,7 +66,4 @@ public class GameStateManager : MonoBehaviour
     {
         currentGameState = GameState.CUTSCENE;
     }
-    
-    
-
 }

@@ -25,18 +25,17 @@ public class PlayerCombat : MonoBehaviour
 
     private void InputManagerOnAttackEvent(object sender, EventArgs e)
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             if (!playerAnimator.IsAttackAnimationPlaying())
             {
-                AudioPlayer.instance.PlayClipAtPosition("Sword Attack");
+                AudioPlayer.Instance.PlayClipAtPosition("Sword Attack");
                 playerAnimator.PerformAttackAnimation();
             }
         }
-        
-        
     }
 
+    //Handle Attack is called in the attack animation using an animation event
     public void HandleAttack()
     {
         //draw overlap shape at attack point
@@ -44,6 +43,7 @@ public class PlayerCombat : MonoBehaviour
         
         foreach(Collider2D t in targets)
         {
+            //for each object with the Damageable interface in the overlap box, call its damage function
             if (t.gameObject.TryGetComponent(out IDamageable d))
             {
                 d.TakeDamage(playerDamage, this.transform.position);

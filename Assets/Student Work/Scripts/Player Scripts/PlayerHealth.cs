@@ -42,10 +42,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void ReduceHealth(float modValue)
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             playerCurrentHealth -= modValue;
-            
                     
                     if (playerCurrentHealth > 0)
                     {
@@ -57,15 +56,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
                         playerStateManager.ChangePlayerState(PlayerStateManager.PlayerState.DEAD);
                     }
         }
-        
-        
     }
 
     private void DamageFeedback()
     {
+        //Any visual or audio feedback that plays when the player takes damage is called here
         VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
-        AudioPlayer.instance.PlayClipAtPosition("Player Hurt");
-        ScoringManager.instance.EndActionCombo();
+        AudioPlayer.Instance.PlayClipAtPosition("Player Hurt");
+        ScoringManager.Instance.EndActionCombo();
         followTarget.Shake(0.3f);
         PlayerTookDamage.Invoke(this,EventArgs.Empty);
     }
@@ -77,15 +75,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void PlayerDeathSequence()
     {
-        AudioPlayer.instance.PlayClipAtPosition("Player Death");
+        AudioPlayer.Instance.PlayClipAtPosition("Player Death");
         spriteMask.eulerAngles = Vector3.zero;
-        GameStateManager.instance.ChangeGameState(GameStateManager.GameState.CUTSCENE);
+        GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.CUTSCENE);
         GetComponent<PlayerAnimator>().PlayDeathAnimation();
     }
 
     public void KillPlayer()
     {
-        GameStateManager.instance.ChangeGameState(GameStateManager.GameState.GAME_OVER);
+        GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.GAME_OVER);
         Destroy(this.gameObject);
     }
     

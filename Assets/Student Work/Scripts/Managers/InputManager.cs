@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     private PlayerActions inputActions;
+    
     public event EventHandler AttackEvent;
     public event EventHandler PauseEvent;
 
@@ -42,6 +41,7 @@ public class InputManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        //Must unsubscribe from these events and disable the input actions on loading a new scene to prevent errors and warnings
         inputActions.INGAME.ATTACK.performed -= ATTACKOnperformed;
         inputActions.INGAME.PAUSE.performed -= PAUSEOnperformed;
         inputActions.INGAME.Disable();
@@ -51,10 +51,10 @@ public class InputManager : MonoBehaviour
 
     private void PAUSEOnperformed(InputAction.CallbackContext obj)
     {
-        if (GameStateManager.instance != null)
+        if (GameStateManager.Instance != null)
         {
-            if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME ||
-                GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.PAUSED)
+            if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME ||
+                GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.PAUSED)
             {
                 if (PauseEvent != null)
                 {
@@ -88,6 +88,7 @@ public class InputManager : MonoBehaviour
 
     private Vector3 ConvertCursorToWorldPos()
     {
+        //Manually assigning the z position to prevent it clipping into the camera
         Vector3 cursorPositionWithZ = new Vector3(cursorPosition.x, cursorPosition.y, -mainCamera.transform.position.z);
         if (mainCamera)
         {

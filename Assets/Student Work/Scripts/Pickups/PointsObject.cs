@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -28,17 +27,15 @@ public class PointsObject : MonoBehaviour, IPickup
                 canPickup = true;
             }
         }
-        
     }
     public void HandlePickup()
     {
-        ScoringManager.instance.UpdatePlayerScore(pointsValue);
-        AudioPlayer.instance.PlayClipAtPosition("Coin");
-        ScoringManager.instance.TickUpActionCounter();
+        ScoringManager.Instance.UpdatePlayerScore(pointsValue);
+        AudioPlayer.Instance.PlayClipAtPosition("Coin");
+        ScoringManager.Instance.TickUpActionCounter();
         Destroy(this.gameObject);
     }
     
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<PlayerMover>())
@@ -47,7 +44,6 @@ public class PointsObject : MonoBehaviour, IPickup
             {
                 HandlePickup();
             }
-                    
         }
     }
 
@@ -59,7 +55,6 @@ public class PointsObject : MonoBehaviour, IPickup
             {
                 HandlePickup();
             }
-                    
         }
     }
 }

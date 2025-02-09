@@ -1,7 +1,6 @@
 using UnityEngine;
 public class CanvasBaseFunctions : MonoBehaviour
 {
-
     private Canvas ownCanvas;
 
     private void Awake()
@@ -27,6 +26,6 @@ public class CanvasBaseFunctions : MonoBehaviour
 
     protected void ButtonSound()
     {
-        AudioPlayer.instance.PlayClipAtPosition("UI Button");
+        AudioPlayer.Instance.PlayClipAtPosition("UI Button");
     }
 }

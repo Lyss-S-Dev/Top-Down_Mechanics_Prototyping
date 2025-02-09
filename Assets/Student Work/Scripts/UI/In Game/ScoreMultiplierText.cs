@@ -12,9 +12,9 @@ public class ScoreMultiplierText : MonoBehaviour
     {
         textAnimator = GetComponent<Animator>();
         
-        ScoringManager.instance.ComboHasUpdated += InstanceOnComboHasUpdated;
-        ScoringManager.instance.ComboHasEnded += InstanceOnComboHasEnded;
-        ScoringManager.instance.ScoreHasUpdated += InstanceOnScoreHasUpdated;
+        ScoringManager.Instance.ComboHasUpdated += InstanceOnComboHasUpdated;
+        ScoringManager.Instance.ComboHasEnded += InstanceOnComboHasEnded;
+        ScoringManager.Instance.ScoreHasUpdated += InstanceOnScoreHasUpdated;
         
         HideText();
     }
@@ -45,7 +45,7 @@ public class ScoreMultiplierText : MonoBehaviour
 
     private void CheckComboState()
     {
-        if (ScoringManager.instance.GetActionComboCounter() >= 16)
+        if (ScoringManager.Instance.GetActionComboCounter() >= 16)
         {
             ShowText();
         }
@@ -57,7 +57,7 @@ public class ScoreMultiplierText : MonoBehaviour
 
     private void ShowText()
     {
-        float scoreMultValue = ScoringManager.instance.GetCurrentScoreMult();
+        float scoreMultValue = ScoringManager.Instance.GetCurrentScoreMult();
         if (scoreMultValue > 1)
         {
             multiplierTextBox.text = scoreMultValue + "X";

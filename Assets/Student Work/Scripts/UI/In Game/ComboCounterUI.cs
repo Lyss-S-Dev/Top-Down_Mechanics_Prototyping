@@ -21,8 +21,8 @@ public class ComboCounterUI : MonoBehaviour
 
     private void Start()
     {
-        ScoringManager.instance.ComboHasUpdated += InstanceOnComboHasUpdated;
-        ScoringManager.instance.ComboHasEnded += InstanceOnComboHasEnded;
+        ScoringManager.Instance.ComboHasUpdated += InstanceOnComboHasUpdated;
+        ScoringManager.Instance.ComboHasEnded += InstanceOnComboHasEnded;
         Hide();
     }
 
@@ -33,7 +33,7 @@ public class ComboCounterUI : MonoBehaviour
 
     private void InstanceOnComboHasUpdated(object sender, EventArgs e)
     {
-        if (ScoringManager.instance.GetIsComboActive())
+        if (ScoringManager.Instance.GetIsComboActive())
         {
             Show();
         }
@@ -43,13 +43,13 @@ public class ComboCounterUI : MonoBehaviour
 
     private void UpdateCounterText()
     {
-        comboCounterText.text = string.Format("{0:00}", ScoringManager.instance.GetActionComboCounter());
+        comboCounterText.text = string.Format("{0:00}", ScoringManager.Instance.GetActionComboCounter());
     }
     private void Update()
     {
-        if (ScoringManager.instance.GetIsComboActive())
+        if (ScoringManager.Instance.GetIsComboActive())
         {
-            comboTimerSlider.value = ScoringManager.instance.GetComboTimeout();
+            comboTimerSlider.value = ScoringManager.Instance.GetComboTimeout();
         }
         
     }

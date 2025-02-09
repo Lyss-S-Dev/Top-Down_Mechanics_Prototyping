@@ -1,7 +1,6 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-
 public class VFXManager : MonoBehaviour
 {
    
@@ -20,8 +19,7 @@ public class VFXManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
+    
     public void DamageFlash(SpriteRenderer spriteToFlash)
     {
         if (spriteToFlash != null)
@@ -43,5 +41,4 @@ public class VFXManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         flashingSprite.color = originalColour;
     }
-    
 }

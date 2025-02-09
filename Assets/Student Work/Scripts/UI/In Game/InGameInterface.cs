@@ -5,7 +5,7 @@ public class InGameInterface : CanvasBaseFunctions
     
     void Start()
     {
-        gameStateManager = GameStateManager.instance;
+        gameStateManager = GameStateManager.Instance;
 
         if (gameStateManager != null)
         {

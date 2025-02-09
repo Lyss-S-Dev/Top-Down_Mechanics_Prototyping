@@ -1,13 +1,12 @@
 using System;
 using UnityEngine;
-
 public class PauseHandler : MonoBehaviour
 {
     private GameStateManager gameStateManager;
 
     private void Start()
     {
-        gameStateManager = GameStateManager.instance;
+        gameStateManager = GameStateManager.Instance;
         
         gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
 
@@ -25,8 +24,7 @@ public class PauseHandler : MonoBehaviour
             UnpauseGame();
         }
     }
-
-
+    
     private void PauseGame()
     {
         Time.timeScale = 0;

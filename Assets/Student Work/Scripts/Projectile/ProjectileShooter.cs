@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
 public class ProjectileShooter : MonoBehaviour
 {
-
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private float projectileDamage;
@@ -19,7 +17,7 @@ public class ProjectileShooter : MonoBehaviour
 
     private void Update()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             spawnCooldownTimer -= Time.fixedDeltaTime;
             

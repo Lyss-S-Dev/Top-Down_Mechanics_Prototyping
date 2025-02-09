@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,6 +54,6 @@ public class MainMenuManager : MonoBehaviour
 
     private void ButtonAudio()
     {
-        AudioPlayer.instance.PlayClipAtPosition("UI Button");
+        AudioPlayer.Instance.PlayClipAtPosition("UI Button");
     }
 }

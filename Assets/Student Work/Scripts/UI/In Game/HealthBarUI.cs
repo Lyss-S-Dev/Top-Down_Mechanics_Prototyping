@@ -50,6 +50,4 @@ public class HealthBarUI : MonoBehaviour
     {
         healthBarAnimator.SetTrigger("Shake");
     }
-
-    
 }

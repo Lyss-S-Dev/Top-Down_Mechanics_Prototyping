@@ -1,6 +1,3 @@
-
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class MeleeEnemy : BaseEnemy
@@ -18,7 +15,7 @@ public class MeleeEnemy : BaseEnemy
 
     protected override void FixedUpdate()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
              base.FixedUpdate();
              if (GetCurrentState() == EnemyState.ACTIVE)
@@ -84,7 +81,7 @@ public class MeleeEnemy : BaseEnemy
 
     protected void PlayAttackAudio()
     {
-        AudioPlayer.instance.PlayClipAtPosition("Sword Attack");
+        AudioPlayer.Instance.PlayClipAtPosition("Sword Attack");
     }
     
 

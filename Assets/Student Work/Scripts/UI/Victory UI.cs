@@ -14,7 +14,7 @@ public class VictoryUI : CanvasBaseFunctions
     
     void Start()
     {
-        gameStateManager = GameStateManager.instance;
+        gameStateManager = GameStateManager.Instance;
 
         if (gameStateManager != null)
         {
@@ -43,23 +43,23 @@ public class VictoryUI : CanvasBaseFunctions
 
     private void SetScoreText()
     {
-        scoreText.text = string.Format("Score: " + "{0:000000}", ScoringManager.instance.GetPlayerScore());
+        scoreText.text = string.Format("Score: " + "{0:000000}", ScoringManager.Instance.GetPlayerScore());
     }
 
     private void SetComboText()
     {
-        comboText.text = string.Format("Highest Combo: " + "{0:000}", ScoringManager.instance.GetHighestComboCount());
+        comboText.text = string.Format("Highest Combo: " + "{0:000}", ScoringManager.Instance.GetHighestComboCount());
     }
 
     private void ReturnToMenuButtonPressed()
     {
         ButtonSound();
-        SceneLoader.instance.HandleLoadScene("Main Menu");
+        SceneLoader.Instance.HandleLoadScene("Main Menu");
     }
 
     private void TryAgainButtonPressed()
     {
         ButtonSound();
-        SceneLoader.instance.RestartCurrentScene();
+        SceneLoader.Instance.RestartCurrentScene();
     }
 }

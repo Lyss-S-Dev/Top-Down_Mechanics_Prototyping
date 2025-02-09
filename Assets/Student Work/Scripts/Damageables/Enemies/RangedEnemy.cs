@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class RangedEnemy : BaseEnemy
@@ -24,7 +23,7 @@ public class RangedEnemy : BaseEnemy
 
      protected override void FixedUpdate()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             base.FixedUpdate();
         
@@ -45,7 +44,7 @@ public class RangedEnemy : BaseEnemy
 
     private void Update()
     {
-        if (GameStateManager.instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
             if (aimLineIsActive)
             {
@@ -77,7 +76,7 @@ public class RangedEnemy : BaseEnemy
     }
     protected void ShootProjectile()
     {
-        AudioPlayer.instance.PlayClipAtPosition("Shoot");
+        AudioPlayer.Instance.PlayClipAtPosition("Shoot");
         GameObject spawnedProjectile = Instantiate(projectile, projectileSpawnPoint.position,this.transform.rotation);
         spawnedProjectile.GetComponent<BasicProjectile>().SetUpProjectile(statistics.attackDamage, projectileSpeed);
     }
@@ -101,7 +100,7 @@ public class RangedEnemy : BaseEnemy
         aimIsLocked = false;
     }
 
-    protected void ShowAimLine()
+    private void ShowAimLine()
     {
         aimLineIsActive = true;
     }
