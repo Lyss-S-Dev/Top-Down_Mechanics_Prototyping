@@ -36,8 +36,6 @@ public class MainMenuManager : MonoBehaviour
     }
     private void HandleExitButtonClicked()
     {
-        
-        ButtonAudio();
         Application.Quit();
     }
     private void HandleControlsButtonClicked()
