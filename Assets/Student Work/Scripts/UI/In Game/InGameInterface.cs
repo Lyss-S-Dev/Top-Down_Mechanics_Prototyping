@@ -11,11 +11,6 @@ public class InGameInterface : CanvasBaseFunctions
         {
             gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
         }
-        else
-        {
-            //Game State manager missing, error
-        }
-
         Hide();
     }
 

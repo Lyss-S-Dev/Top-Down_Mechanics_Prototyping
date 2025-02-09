@@ -38,7 +38,7 @@ public class VFXManager : MonoBehaviour
     private IEnumerator DamageFlashDuration(SpriteRenderer flashingSprite, Color originalColour)
     {
         flashingSprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         flashingSprite.color = originalColour;
     }
 }

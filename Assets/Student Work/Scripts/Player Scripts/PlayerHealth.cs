@@ -61,7 +61,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void DamageFeedback()
     {
         //Any visual or audio feedback that plays when the player takes damage is called here
-        VFXManager.Instance.DamageFlash(this.GetComponentInChildren<SpriteRenderer>());
         AudioPlayer.Instance.PlayClipAtPosition("Player Hurt");
         ScoringManager.Instance.EndActionCombo();
         followTarget.Shake(0.3f);

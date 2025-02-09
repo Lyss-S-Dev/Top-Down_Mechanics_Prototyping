@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class HealthBarUI : MonoBehaviour
 
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite brokenHeart;
+
+    [SerializeField] private GameObject playerDamageFeedbackOverlay;
     
     private void Start()
     {
@@ -20,6 +23,8 @@ public class HealthBarUI : MonoBehaviour
         {
             playerHealth.PlayerTookDamage += OnPlayerTookDamage;
         }
+        
+        playerDamageFeedbackOverlay.SetActive(false);
         UpdateHealthBar();
     }
 
@@ -27,6 +32,7 @@ public class HealthBarUI : MonoBehaviour
     {
         UpdateHealthBar();
         ShakeUIElement();
+        StartCoroutine(FlashDamageOverlay());
     }
 
     private void UpdateHealthBar()
@@ -49,5 +55,12 @@ public class HealthBarUI : MonoBehaviour
     private void ShakeUIElement()
     {
         healthBarAnimator.SetTrigger("Shake");
+    }
+
+    private IEnumerator FlashDamageOverlay()
+    {
+        playerDamageFeedbackOverlay.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.1f);
+        playerDamageFeedbackOverlay.SetActive(false);
     }
 }
