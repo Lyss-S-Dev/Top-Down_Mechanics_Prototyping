@@ -36,7 +36,7 @@ public class MainMenuManager : MonoBehaviour
     }
     private void HandleExitButtonClicked()
     {
-        Application.Quit();
+        HandleExit();
     }
     private void HandleControlsButtonClicked()
     {
@@ -53,5 +53,10 @@ public class MainMenuManager : MonoBehaviour
     private void ButtonAudio()
     {
         AudioPlayer.Instance.PlayClipAtPosition("UI Button");
+    }
+
+    private void HandleExit()
+    {
+        Application.Quit();
     }
 }
