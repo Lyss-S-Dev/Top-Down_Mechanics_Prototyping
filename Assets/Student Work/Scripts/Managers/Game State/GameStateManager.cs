@@ -54,7 +54,7 @@ public class GameStateManager : MonoBehaviour
     public void ChangeGameState(GameState stateToChange)
     {
         currentGameState = stateToChange;
-        StateHasChanged.Invoke(this, EventArgs.Empty);
+        if (StateHasChanged != null) StateHasChanged.Invoke(this, EventArgs.Empty);
     }
 
     public GameState GetCurrentGameState()
