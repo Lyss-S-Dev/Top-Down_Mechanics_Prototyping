@@ -136,4 +136,4 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 2364054126684062981}
   projectileDamage: 1
   projectileSpeed: 500
-  spawnCooldown: 10
+  spawnCooldown: 3

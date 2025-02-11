@@ -19,7 +19,7 @@ public class ProjectileShooter : MonoBehaviour
     {
         if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
         {
-            spawnCooldownTimer -= Time.fixedDeltaTime;
+            spawnCooldownTimer -= Time.deltaTime;
             
             if (spawnCooldownTimer <= 0f)
             {

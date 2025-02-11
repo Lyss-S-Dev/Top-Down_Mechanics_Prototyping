@@ -38,6 +38,9 @@ public class InputManager : MonoBehaviour
         inputActions.INGAME.ATTACK.performed += ATTACKOnperformed;
         inputActions.INGAME.PAUSE.performed += PAUSEOnperformed;
     }
+    
+
+    
 
     private void OnDestroy()
     {
