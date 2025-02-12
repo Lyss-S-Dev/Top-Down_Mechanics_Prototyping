@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class GameOverMenu : CanvasBaseFunctions
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     private GameStateManager gameStateManager;
 
     [SerializeField] private Button restartButton;

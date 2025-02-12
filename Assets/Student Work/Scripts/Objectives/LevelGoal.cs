@@ -23,6 +23,7 @@ public class LevelGoal : MonoBehaviour, IPickup
         animator.SetTrigger("Level Win");
     }
 
+    //Called at the end of an animation via an event
     protected void WinAnimationDone()
     {
         GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.END_OF_LEVEL);

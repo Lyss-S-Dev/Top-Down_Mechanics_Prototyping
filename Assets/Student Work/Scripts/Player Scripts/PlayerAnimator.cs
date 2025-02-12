@@ -50,6 +50,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         Instantiate(deathParticles,transform.position,quaternion.identity);
     }
+    
+    //Called at the end of the death animation.
     protected void DeathAnimationEnded()
     {
         GetComponent<PlayerHealth>().KillPlayer();

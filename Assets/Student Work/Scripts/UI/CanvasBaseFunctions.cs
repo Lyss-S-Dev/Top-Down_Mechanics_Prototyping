@@ -8,6 +8,10 @@ public class CanvasBaseFunctions : MonoBehaviour
         ownCanvas = this.GetComponent<Canvas>();
     }
 
+    
+    /// <summary>
+    /// Enables the canvas
+    /// </summary>
     protected void Show()
     {
         if (ownCanvas)
@@ -16,6 +20,10 @@ public class CanvasBaseFunctions : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Disables the canvas
+    /// </summary>
     protected void Hide()
     {
         if (ownCanvas)
@@ -24,6 +32,10 @@ public class CanvasBaseFunctions : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Play the button sound from the Audio Player
+    /// </summary>
     protected void ButtonSound()
     {
         AudioPlayer.Instance.PlayClipAtPosition("UI Button");

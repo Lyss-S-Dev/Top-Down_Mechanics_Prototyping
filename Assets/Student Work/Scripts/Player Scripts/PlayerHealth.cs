@@ -57,10 +57,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
                     }
         }
     }
-
+    
+    //Any visual or audio feedback that plays when the player takes damage is called here
     private void DamageFeedback()
     {
-        //Any visual or audio feedback that plays when the player takes damage is called here
+        
         AudioPlayer.Instance.PlayClipAtPosition("Player Hurt");
         ScoringManager.Instance.EndActionCombo();
         followTarget.Shake(0.3f);
@@ -80,6 +81,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         GetComponent<PlayerAnimator>().PlayDeathAnimation();
     }
 
+    
+    //This method is called at the end of the death animation
     public void KillPlayer()
     {
         GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.GAME_OVER);

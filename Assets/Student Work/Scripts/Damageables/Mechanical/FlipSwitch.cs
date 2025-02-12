@@ -24,10 +24,10 @@ public class FlipSwitch : MonoBehaviour, IDamageable
         SetUpFalseObjects();
         SetUpTrueObjects();
     }
-
+    
+    //Gives each sprite in the False Object array the same colour as the switches false state
     private void SetUpFalseObjects()
     {
-        //Gives each sprite in the False Object array the same colour as the switches false state
         foreach (FlipObject falseObj in toggleFalseObjects)
         {
             falseObj.gameObject.GetComponentInChildren<SpriteRenderer>().color = toggleFalseColour;
@@ -35,10 +35,10 @@ public class FlipSwitch : MonoBehaviour, IDamageable
             falseObj.SetState(toggleState);
         }
     }
-
+    
+    //Gives each sprite in the True Object array the same colour as the switches true state
     private void SetUpTrueObjects()
     {
-        //Gives each sprite in the True Object array the same colour as the switches true state
         foreach (FlipObject trueObj in toggleTrueObjects)
         {
             trueObj.gameObject.GetComponentInChildren<SpriteRenderer>().color = toggleTrueColour;
@@ -57,6 +57,9 @@ public class FlipSwitch : MonoBehaviour, IDamageable
         ToggleSwitch();
     }
     
+    /// <summary>
+    /// Inverts the boolean state of the switch. Then do the same for all objects in the switch's arrays
+    /// </summary>
     private void ToggleSwitch()
     {
         toggleState = !toggleState;

@@ -2,19 +2,11 @@ using UnityEngine;
 
 public class LookAtCursor : MonoBehaviour
 {
-    private InputManager inputManager;
-
     private Vector3 worldPosition;
-    
-    void Start()
-    {
-        inputManager = InputManager.Instance;
-        
-    }
     
     void Update()
     {
-        worldPosition = inputManager.GetCursorWorldPosition();
+        worldPosition = InputManager.Instance.GetCursorWorldPosition();
     }
 
     private void FixedUpdate()

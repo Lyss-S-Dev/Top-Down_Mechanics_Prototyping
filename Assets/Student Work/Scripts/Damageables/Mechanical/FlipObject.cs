@@ -12,12 +12,20 @@ public class FlipObject : MonoBehaviour
         objectCollider = GetComponent<Collider2D>();
         objectLight = GetComponentInChildren<Light2D>();
     }
+    
+    /// <summary>
+    /// Invert the boolean state of the object
+    /// </summary>
     public void FlipState()
     {
         currentState = !currentState;
         ChangeProperties();
     }
 
+    /// <summary>
+    /// Set the boolean state of the object
+    /// </summary>
+    /// <param name="stateToSet"> The state you want the object to have</param>
     public void SetState(bool stateToSet)
     {
         currentState = stateToSet;

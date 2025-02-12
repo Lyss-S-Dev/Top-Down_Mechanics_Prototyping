@@ -25,6 +25,12 @@ public class BasicProjectile : MonoBehaviour
         projectileBody.linearVelocity = transform.up * (projectileSpeed * Time.fixedDeltaTime);
     }
 
+    
+    /// <summary>
+    /// Assign Speed and Damage values of a spawned projectile
+    /// </summary>
+    /// <param name="damageValue">The amount of damage the projectile does</param>
+    /// <param name="speedValue">The speed of the projectile </param>
     public void SetUpProjectile(float damageValue, float speedValue)
     {
         projectileDamage = damageValue;

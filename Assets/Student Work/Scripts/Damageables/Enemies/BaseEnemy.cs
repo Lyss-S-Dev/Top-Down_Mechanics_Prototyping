@@ -49,12 +49,12 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     {
         currentState = stateToChange;
     }
-
+    
     public void TakeDamage(float damageValue)
     {
         ChangeHealth(damageValue);
     }
-
+    
     public void TakeDamage(float damageValue, Vector3 damageSource)
     {
         ChangeHealth(damageValue);
@@ -70,6 +70,8 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         }
     }
 
+    
+    //Damage effects and feedback are all called here. Requires the position of the damage source
     private void EnemyDamageFeedback(Vector3 damageSource)
     {
         GameObject spawnedParticles = Instantiate(damageParticles, this.transform.position, quaternion.identity);
@@ -105,7 +107,9 @@ public class BaseEnemy : MonoBehaviour, IDamageable
     
     private void DetectPlayer()
     {
+        //use a raycast that points at the player's current position
         RaycastHit2D hit = Physics2D.Raycast(transform.position, (playerPosition.position - transform.position).normalized, statistics.detectionRadius, ~detectionIgnoreLayer);
+
         if (hit)
         {
             if (hit.transform.GetComponent<PlayerHealth>())
