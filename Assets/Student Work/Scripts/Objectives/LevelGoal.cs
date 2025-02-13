@@ -19,6 +19,7 @@ public class LevelGoal : MonoBehaviour, IPickup
     public void HandlePickup()
     {
         GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.CUTSCENE);
+        ScoringManager.Instance.EndActionCombo();
         AudioPlayer.Instance.PlayClipAtPosition("Victory");
         animator.SetTrigger("Level Win");
     }

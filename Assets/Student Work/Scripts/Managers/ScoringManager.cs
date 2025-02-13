@@ -31,6 +31,8 @@ public class ScoringManager : MonoBehaviour
         SetPlayerScore(0);
     }
 
+    
+
     private void Update()
     {
         if (isActionComboActive && GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.IN_GAME)
@@ -89,6 +91,9 @@ public class ScoringManager : MonoBehaviour
         ResetActionCounter();
     }
 
+    /// <summary>
+    /// Checks the current action count against the highest combo count. If its true, the current count becomes the new highest
+    /// </summary>
     private void CheckForHighestComboCount()
     {
         if (actionCounter > highestComboCount)
