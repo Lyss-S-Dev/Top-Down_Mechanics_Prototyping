@@ -23,6 +23,11 @@ public class SceneLoader : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         
     }
+    
+    /// <summary>
+    /// Begins the LoadAsyncScene coroutine for the given scene name
+    /// </summary>
+    /// <param name="sceneNameToLoad"> The name of the scene you want to load</param>
 
     public void HandleLoadScene(string sceneNameToLoad)
     {
@@ -47,6 +52,10 @@ public class SceneLoader : MonoBehaviour
         loadingScreen.HideLoadingScreen();
     }
 
+    
+    /// <summary>
+    /// Loads the currently open scene
+    /// </summary>
     public void RestartCurrentScene()
     {
         HandleLoadScene(SceneManager.GetActiveScene().name);

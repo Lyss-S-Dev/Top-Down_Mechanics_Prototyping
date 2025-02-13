@@ -11,7 +11,6 @@ public class LightFlicker : MonoBehaviour
     [SerializeField] private float minFlickerTime = 0.1f;
     [SerializeField] private float maxFlickerTime = 0.3f;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         objectLight = GetComponentInChildren<Light2D>();

@@ -29,6 +29,11 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Plays a 2D audio source of the given name
+    /// </summary>
+    /// <param name="clipName">Name of the audio clip you want to play</param>
     public void PlayClipAtPosition(string clipName)
     {
         foreach (SoundEffect audioClip in audioSources)

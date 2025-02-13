@@ -20,6 +20,10 @@ public class VFXManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Begins a coroutine that causes the passed sprite to tint red for a moment
+    /// </summary>
+    /// <param name="spriteToFlash">The sprite of the object that has taken damage</param>
     public void DamageFlash(SpriteRenderer spriteToFlash)
     {
         if (spriteToFlash != null)
@@ -30,6 +34,10 @@ public class VFXManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Spawns the Alert particle system at a given position. Used by enemies to indicate they have spotted the player
+    /// </summary>
+    /// <param name="worldPosition">The position of the object</param>
     public void SpawnAlertParticle(Vector3 worldPosition)
     {
         Instantiate(alertParticle, worldPosition, quaternion.identity);

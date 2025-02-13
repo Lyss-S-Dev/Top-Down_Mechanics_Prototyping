@@ -9,7 +9,7 @@ public class LoadingScreen : CanvasBaseFunctions
         loadingAnimator = GetComponent<Animator>();
         Hide();
     }
-
+    
     public void ShowLoadingScreen()
     {
         Show();

@@ -75,8 +75,7 @@ public class InputManager : MonoBehaviour
             AttackEvent.Invoke(this, EventArgs.Empty);
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         moveDirection = inputActions.INGAME.MOVE.ReadValue<Vector2>();
@@ -84,6 +83,10 @@ public class InputManager : MonoBehaviour
         cursorWorldPosition = ConvertCursorToWorldPos();
     }
 
+    /// <summary>
+    /// Returns the normalized Vector2 to determine player direction
+    /// </summary>
+    /// <returns></returns>
     public Vector2 GetMoveDirection()
     {
         return moveDirection;
@@ -101,6 +104,10 @@ public class InputManager : MonoBehaviour
         return Vector3.zero;
     }
 
+    /// <summary>
+    /// Returns the Vector3 of the mouse position in world space
+    /// </summary>
+    /// <returns></returns>
     public Vector3 GetCursorWorldPosition()
     {
         return cursorWorldPosition;

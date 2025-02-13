@@ -20,10 +20,6 @@ public class VictoryUI : CanvasBaseFunctions
         {
             gameStateManager.StateHasChanged += GameStateManagerOnStateHasChanged;
         }
-        else
-        {
-            //Game State Manager is missing, error
-        }
         
         returnToMenuButton.onClick.AddListener(ReturnToMenuButtonPressed);
         tryAgainButton.onClick.AddListener(TryAgainButtonPressed);

@@ -48,6 +48,11 @@ public class ScoringManager : MonoBehaviour
         playerScore = setPointsValue;
     }
 
+    
+    /// <summary>
+    /// Increases the player's score 
+    /// </summary>
+    /// <param name="pointsValue">How much the score should be increased by</param>
     public void UpdatePlayerScore(int pointsValue)
     {
         int actualValue = (int)MathF.Round(pointsValue * GetComboMultiplier());
@@ -55,6 +60,9 @@ public class ScoringManager : MonoBehaviour
         ScoreHasUpdated.Invoke(this,EventArgs.Empty);
     }
 
+    /// <summary>
+    /// Adds 1 to the player's current combo counter. If the player has no combo active, this method begins the combo
+    /// </summary>
     public void TickUpActionCounter()
     {
         if (actionCounter == 0)
@@ -67,19 +75,33 @@ public class ScoringManager : MonoBehaviour
         ResetComboTimeout();
     }
 
+    /// <summary>
+    /// Ends the currently active combo
+    /// </summary>
+    
     public void EndActionCombo()
     {
         isActionComboActive = false;
         ComboHasEnded.Invoke(this.gameObject,EventArgs.Empty);
 
-        if (actionCounter > highestComboCount)
-        {
-            highestComboCount = actionCounter;
-        }
+        CheckForHighestComboCount();
         
         ResetActionCounter();
     }
 
+    private void CheckForHighestComboCount()
+    {
+        if (actionCounter > highestComboCount)
+        {
+            highestComboCount = actionCounter;
+        }
+    }
+
+    
+    /// <summary>
+    /// Returns the score multiplier based on the player's current combo count. Defaults to 1
+    /// </summary>
+    /// <returns></returns>
     private float GetComboMultiplier()
     {
         if (actionCounter >= 15 && actionCounter < 30)
